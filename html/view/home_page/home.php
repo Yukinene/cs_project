@@ -1,0 +1,22 @@
+
+<title>Home</title>
+<?php
+require '../../inc/header.php';
+if (checkusername()) {
+    ?>
+    <div class="row">
+        <div class="col-4"></div>
+        <div class="col-4 text-center">
+            <h1><h1 class="fs-1 mb-3">ถั่ว เว้ย เฮ้ย</h1>
+          <h4 class="fs-1 mb-3">ถั่วเคลือบมะม่วงเคลือบ</h4></h1>
+        </div>
+        <div class="col-4"></div>
+    </div>
+    <?php
+    require '../product_page/product_list.php';    
+}
+else {
+    require 'intro.php';
+}
+require '../../inc/footer.php';
+?>
