@@ -85,12 +85,11 @@ checkadmin();
                       <?php }
                       ?>
                     </form>
+                    <a class="btn btn-warning" href="../../view/admin_page/product_material.php?id=<?=$fetch_product['product_id']?>">ตรวจสอบวัตถุดิบ</a>
                     <!-- Button trigger modal -->
-                    <br>
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editproductModal<?=$fetch_product['product_id']?>">
                       แก้ไขผลิตภัณฑ์
                     </button>
-
                     <!-- Modal -->
                     <div class="modal fade" id="editproductModal<?=$fetch_product['product_id']?>" tabindex="-1" aria-labelledby="editproductModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
@@ -105,7 +104,7 @@ checkadmin();
                             <input type="hidden" name="product_img" id="product_img" value="<?=$fetch_product['product_img']?>">
                           <div class="form-group">
                               <label class="text-start">ขื่อผลิตภัณฑ์</label>
-                                <input class="form-control" type="text" name="product_name" value="<?=$fetch_product['product_name']?>" maxlength="190" required>
+                                <input class="form-control" type="text" name="product_name" value="<?=$fetch_product['product_name']?>" maxlength="190" readonly>
                           </div>
                           <div class="form-group">
                             <label>รายละเอียดของผลิตภัณฑ์ (สูงสุด 190 ตัวอักษร)</label>
@@ -129,11 +128,10 @@ checkadmin();
                         </div>
                       </div>
                     </div>
-                    <br>
+                    <!-- Button trigger modal -->
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editproductcategoryModal<?=$fetch_product['product_id']?>">
                       แก้ไขประเภทผลิตภัณฑ์
                     </button>
-
                     <!-- Modal -->
                     <div class="modal fade" id="editproductcategoryModal<?=$fetch_product['product_id']?>" tabindex="-1" aria-labelledby="editproductcategoryModalLabel" aria-hidden="true">
                       <div class="modal-dialog">

@@ -17,13 +17,22 @@
       $product_img_folder_rename = '../../images/products_image/'.$product_img_rename;
 
       // Finally, register product and upload image
-      copy($product_img_tmp_name, $product_img_folder);
+      if (mysqli_num_rows(
+        mysqli_query($db, "SELECT * FROM `products` WHERE `product_name` = '".$product_name."'")
+      ) > 0) {
+        array_push($errors, "มีผลิตภัณฑ์อยู่แล้ว");
+      }
+      else {
+        copy($product_img_tmp_name, $product_img_folder);
       if (rename($product_img_folder,$product_img_folder_rename)) {
         $query = "INSERT INTO products (product_name,product_description,product_img,product_price) 
-              VALUES('$product_name','$product_description','$product_img_rename','$product_price')";
+            VALUES('$product_name','$product_description','$product_img_rename','$product_price')";
         mysqli_query($db, $query);
         array_push($completes, "เพิ่มสำเร็จ");
+        
       }
+      }
+      
     }
     if (isset($_POST['edit_prod'])) {
       // receive all input values from the form
