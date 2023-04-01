@@ -34,7 +34,7 @@
                     <div>
                         <div class="card-text"><?php echo $fetch_product['product_description']; ?></div>
                         <div class="card-text">$<?php echo $fetch_product['product_price']; ?>/THB</div>
-                        <input type="hidden" name="product_name" value="<?php echo $fetch_product['product_name']; ?>">
+                        <input type="hidden" name="product_id" value="<?php echo $fetch_product['product_id']; ?>">
                         <?php if(checkusername()){
                         ?>
                         <input type="submit" class="btn btn-success" value="add to cart" name="add_to_cart">

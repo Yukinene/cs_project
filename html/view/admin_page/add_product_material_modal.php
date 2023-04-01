@@ -24,7 +24,7 @@
                               while($fetch_material_list = mysqli_fetch_assoc($select_material_list)){
                                 $check_material_product = 
                                     mysqli_query($db,
-                                    "SELECT * FROM `product_materials` WHERE `material_id` = ".$fetch_material_list['material_id'].""
+                                    "SELECT * FROM `product_materials` WHERE `material_id` = ".$fetch_material_list['material_id']." AND product_id =".$_GET['id']
                                     );
                                 if(mysqli_num_rows($check_material_product) > 0){
                                

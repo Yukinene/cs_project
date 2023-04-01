@@ -1,13 +1,6 @@
 <?php
 require '../../inc/header.php';
-require '../../view/order_page/order_insert.php';
-$order_status = array(
-    "รอยืนยันการจ่ายเงิน",
-    "ยกเลิกรายการ",
-    "กำลังเตรียมส่ง",
-    "กำลังจัดส่ง",
-    "เสร็จสิ้น"
-  );
+require '../../inc/ordercontroller.php';
 $username = $_SESSION['username'];
 $select_user = mysqli_query($db, "SELECT * FROM users WHERE username='$username'");
 $user = mysqli_fetch_assoc($select_user);
@@ -18,7 +11,8 @@ if (isset($_GET['id'])) {
     if (!(checkrole('admin') || ($user['id']===$order['user_id']))) {
         header('location: ../../index.php');
     }
-    $order_cart = json_decode($order['carts']);
+    
+    $order_cart = mysqli_query($db,"SELECT * FROM `order_products` WHERE `order_id` = ".$_GET['id']);
     $i = 1;
 }
 else {
@@ -52,7 +46,7 @@ else {
     </div>
 </div>  
 <div class="row mb-2">
-<div class="col-4">
+<div class="col-12">
             <h5 class="card-title mt-2">สินค้าที่ซื้อ</h5>
             <table id="cartTable" class="table table-striped" style="width:100%">
                     <thead>
@@ -71,19 +65,23 @@ else {
                     <tbody>
                         <?php
                         // Display the cart
-                        foreach($order_cart as $item => $quantity) {
-                        echo '<tr>';
-                        echo '<th>' . $i . '</th>';
-                        echo '<th>' . $item . '</th>';
-                        echo '<th>' . $quantity . '</th>';
-                        echo '</tr>';
-                        $i++;
+                        if(mysqli_num_rows($order_cart) > 0){
+                            while($fetch_order_cart = mysqli_fetch_assoc($order_cart)){
+                                $products = "SELECT * FROM `products` WHERE `product_id` = '".$fetch_order_cart['product_id']."'";
+                                $product = mysqli_fetch_array(mysqli_query($db, $products));
+                                echo '<tr>';
+                                echo '<th>' . $i . '</th>';
+                                echo '<th>' . $product['product_name'] . '</th>';
+                                echo '<th>' . $fetch_order_cart['quantity'] . '</th>';
+                                echo '</tr>';
+                                $i++;
+                            }
                         }
                         ?>
                     </tbody>
                 </table>
         </div>
-        <div class="col-4">
+        <div class="col-6">
             <div class="card text-dark bg-light">
             <h5 class="card-title mt-2 text-center">จำนวนเงินและการชำระเงิน</h5>
                 <div class="row mb-2">
@@ -96,7 +94,7 @@ else {
                 </div>
             </div>
         </div>
-    <div class="mt-3 col-4">
+    <div class="mt-3 col-6">
         <div class="card text-dark bg-light">
             <form method="post" enctype="multipart/form-data" action="">
                 <input class="form-control" type="hidden" name="order_id" value="<?= $order['id']; ?>">
@@ -220,7 +218,7 @@ else {
                     ?>
                 </div>
             </div>
-            <?php if ($order['status'] >= 3 || checkrole('admin') ) {
+            <?php if ($order['status'] >= 4 || checkrole('admin') ) {
             ?>
                 <div class="col-6">
                 <div class="card text-dark bg-light">
@@ -240,25 +238,6 @@ else {
     </div>
 <?php } ?>
 
-
-<script>
-        $(document).ready(function () {
-            $("#cartTable").DataTable({
-              "order": [[ 0, "desc" ]],
-        "responsive": true,
-        "ordering": false,
-        lengthMenu: [
-            [5, 10, 25, 50, 100],
-            [5, 10, 25, 50, 100]
-          ],
-        "pageLength": 25,
-        language: 
-        {
-          url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/th.json'
-        }
-            });
-        });
-</script>
 <?php
 require '../../inc/footer.php';
 ?>

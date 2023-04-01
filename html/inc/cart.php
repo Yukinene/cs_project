@@ -10,7 +10,7 @@ if(isset($_SESSION['cart'])) {
 // Add an item to the cart
 if(isset($_POST['add_to_cart'])){
   if (count($cart) < 10) {
-    $item = $_POST['product_name'];
+    $item = $_POST['product_id'];
     if(!isset($cart[$item])) {
       $cart[$item] = 1;
     array_push($completes, "เพิ่มในรถเข็นเรียบร้อย");
@@ -27,7 +27,7 @@ if(isset($_POST['add_to_cart'])){
 
 // Remove quantity from an item in the cart
 if(isset($_POST['remove_quantity'])){
-  $item = $_POST['product_name'];
+  $item = $_POST['product_id'];
   if(isset($cart[$item])) 
   {
     if($cart[$item] > 1)
@@ -46,7 +46,7 @@ if(isset($_POST['remove_quantity'])){
   
   // Remove an item from the cart
   if(isset($_POST['remove'])) {
-    $item = $_POST['product_name'];
+    $item = $_POST['product_id'];
     if(isset($cart[$item])) {
       unset($cart[$item]);
     }

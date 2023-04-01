@@ -36,7 +36,7 @@
                                     </center>
 								    </div>
                                 <center>
-                            <?php if (checkrole('admin') && $order['status'] < 3) { ?>
+                            <?php if (checkrole('admin') && $order['status'] < 4) { ?>
                                     <button class="btn btn-success mb-2" type="submit" name="shipment_approve">ยืนยัน</button>
                                     <button class="btn btn-danger mb-2" type="submit" name="shipment_decline">ปฏิเสธ</button>
                             <?php }?>

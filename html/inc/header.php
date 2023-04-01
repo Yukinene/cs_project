@@ -50,11 +50,12 @@
               ระบบจัดการของผู้ดูแลระบบ <i class="bi bi-file-earmark-text-fill"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
-              <li class="nav-item"><a name="product_admin" href="../../view/admin_page/product_admin.php" class="nav-link">จัดการสินค้า</a></li>
-              <li class="nav-item"><a name="material_admin" href="../../view/admin_page/material_admin.php" class="nav-link">จัดการวัตถุดิบ</a></li>
-              <li class="nav-item"><a name="order_admin" href="../../view/admin_page/category_admin.php" class="nav-link">จัดการประเภทสินค้า</a></li>
-              <li class="nav-item"><a name="order_admin" href="../../view/admin_page/payment_method_admin.php" class="nav-link">ช่องทางการจ่ายเงิน</a></li>
-              <li class="nav-item"><a name="order_admin" href="../../view/admin_page/tier_admin.php" class="nav-link">ระดับและค่าขนส่ง</a></li>
+              <li class="nav-item"><a name="plan_admin" href="../../view/admin_page/plan_admin.php" class="nav-link">แผน</a></li>
+              <li class="nav-item"><a name="product_admin" href="../../view/admin_page/product_admin.php" class="nav-link">สินค้า</a></li>
+              <li class="nav-item"><a name="material_admin" href="../../view/admin_page/material_admin.php" class="nav-link">วัตถุดิบ</a></li>
+              <li class="nav-item"><a name="category_admin" href="../../view/admin_page/category_admin.php" class="nav-link">ประเภทสินค้า</a></li>
+              <li class="nav-item"><a name="payment_method_admin" href="../../view/admin_page/payment_method_admin.php" class="nav-link">ช่องทางการจ่ายเงิน</a></li>
+              <li class="nav-item"><a name="tier_admin" href="../../view/admin_page/tier_admin.php" class="nav-link">ระดับและค่าขนส่ง</a></li>
               <li class="nav-item"><a name="order_admin" href="../../view/admin_page/order_admin.php" class="nav-link">คำสั่งซื้อ</a></li>
             </ul>
           </li>

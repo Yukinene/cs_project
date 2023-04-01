@@ -16,7 +16,6 @@ if (isset($_POST['add_order'])) {
     $sub_district = mysqli_real_escape_string($db, $_POST['sub_district']);
     $country = mysqli_real_escape_string($db, $_POST['country']);
     $postal_code = mysqli_real_escape_string($db, $_POST['postal_code']);
-    $array_cart = json_encode($cart, JSON_UNESCAPED_UNICODE );
     
     if (empty($name) || empty($surname)) {
       array_push($errors, "กรุณาใส่ชื่อ นามสกุล");
@@ -24,19 +23,25 @@ if (isset($_POST['add_order'])) {
     else 
     {if (count($cart) > 0) {
         // Finally, register order
-        $query = "INSERT `orders`(`user_id`, `carts`, `amount`, `payment_method`,
+        $query = "INSERT `orders`(`user_id`, `amount`, `payment_method`,
         `name`, `surname`, `building_no`, `line`, `province`, `district`, `sub_district`,
         `country`, `postal_code`) 
-        VALUES ('$user_id','$array_cart','$amount','$payment_method',
+        VALUES ('$user_id','$amount','$payment_method',
         '$name', '$surname', '$building_no', '$line', '$province', '$district', '$sub_district',
           '$country','$postal_code')";
         mysqli_query($db, $query);
+        $order_id = mysqli_query($db,"SELECT max(`id`) FROM `orders` WHERE 1");
+        foreach($cart as $item => $quantity) {
+              mysqli_query($db, "INSERT INTO `order_products`(`order_id`, `product_id`, `product_amount`) 
+              VALUES (".$order_id[max(`id`)].",".$item.",".$quantity.")");
+        }
         $month = date("m");
         $year = date("Y");
         $user_order = mysqli_query($db,"SELECT * FROM user_order WHERE user='".$user_id."' AND month='".$month."' AND year='".$year."'");
         if(mysqli_num_rows($user_order) < 1){
             $user_order_query = "INSERT `user_order`(`user`, `month`, `year`, `amount`) 
-                VALUES ('".$user['id']."','".$month."','".$year."','".$amount."')";        
+                VALUES ('".$user['id']."','".$month."','".$year."','".$amount."')";
+            
         }
         else {
             $fetch_user_order = mysqli_fetch_assoc($user_order);
@@ -76,7 +81,7 @@ if (isset($_POST['add_payment'])) {
   if (rename($payment_img_folder,$payment_img_folder_rename)) {
 
     // Finally, register payment order
-    $query = "INSERT INTO `payment`(`order_id`, `payment_img`) VALUES ('$order_id','$payment_img_rename')";
+    $query = "INSERT INTO `payments`(`order_id`, `payment_img`) VALUES ('$order_id','$payment_img_rename')";
     mysqli_query($db, $query);
     array_push($completes, "เพิ่มหลักฐานเสร็จสิ้น");
   }
@@ -90,7 +95,7 @@ if (isset($_POST['payment_decline'])) {
 
   if (unlink($payment_img_folder_delete)) {
     // Finally, delete payment order
-    $query = "DELETE FROM `payment` WHERE `order_id` = '$order_id'";
+    $query = "DELETE FROM `payments` WHERE `order_id` = '$order_id'";
     mysqli_query($db, $query);
     array_push($completes, "เสร็จสิ้น");
   }
@@ -146,7 +151,7 @@ if (isset($_POST['shipment_approve'])) {
   $order_id = $_POST['order_id'];
   $user_id = $_POST['user_id'];
   
-  $query = "UPDATE `orders` SET `status` = '3' WHERE `orders`.`id` = '$order_id'";
+  $query = "UPDATE `orders` SET `status` = '5' WHERE `orders`.`id` = '$order_id'";
   if (mysqli_query($db, $query)) {
     // Finally, approve shipment order
     array_push($completes, "เสร็จสิ้น");
