@@ -50,6 +50,7 @@
               ระบบจัดการของผู้ดูแลระบบ <i class="bi bi-file-earmark-text-fill"></i>
             </a>
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
+              <li class="nav-item"><a name="plan_admin" href="../../view/admin_page/account_admin.php" class="nav-link">รายรับรายจ่าย</a></li>
               <li class="nav-item"><a name="plan_admin" href="../../view/admin_page/plan_admin.php" class="nav-link">แผน</a></li>
               <li class="nav-item"><a name="product_admin" href="../../view/admin_page/product_admin.php" class="nav-link">สินค้า</a></li>
               <li class="nav-item"><a name="material_admin" href="../../view/admin_page/material_admin.php" class="nav-link">วัตถุดิบ</a></li>

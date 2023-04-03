@@ -5,7 +5,7 @@ require '../../inc/errors.php';
 require '../../inc/complete.php';
 checkadmin();
 $select_plans = mysqli_query($db, "SELECT * FROM `plans`");
-$check_plans = mysqli_query($db, "SELECT * FROM `plans` WHERE `status` = 'สำเร็จ'");
+$check_plans = mysqli_query($db, "SELECT * FROM `plans` WHERE `status` = 'เสร็จสิ้น'");
 ?>
 <title>ระบบจัดการแผนการผลิต (สำหรับผู้จัดการระบบ)</title>
 <h2>แผนการผลิต</h2>

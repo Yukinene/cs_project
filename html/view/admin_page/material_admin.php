@@ -53,6 +53,8 @@ checkadmin();
                     <?=$fetch_material['bought_price']?>
                 </th>
                 <th>
+                  <a class="btn btn-dark" href="../../view/log/log_materials.php?id=<?=$fetch_material['material_id']?>">ตรวจสอบการเข้าออก</a>
+                    <br><br>
                     <!-- Button trigger modal -->
                     <br>
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editmaterialModal<?=$fetch_material['material_id']?>">

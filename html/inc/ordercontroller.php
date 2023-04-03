@@ -183,8 +183,15 @@ if (isset($_POST['change_status'])) {
       $user_total_amount = "UPDATE `users` SET `total_amount`=".$fetch_sum_amount['SUM(`amount`)']." WHERE id='".$order_user."'";
       mysqli_query($db, $user_total_amount);
       }
+      if ($status == 6) {
+        $info = "คำสั่งซื้อที่ ".$order_id;
+        mysqli_query($db, "
+          INSERT INTO `account`(`amount`, `info`)
+          VALUES (".$order_amount.",'".$info."')");
+      }
       array_push($completes, "เสร็จสิ้น");
     }
+    
   }
   else {
     array_push($errors, "ไม่สามารถทำได้");

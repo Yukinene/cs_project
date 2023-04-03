@@ -77,7 +77,7 @@ if (isset($_POST['plan_id'])) {
         $info = "ซื้อวัตถุดิบในแผนที่ ".$_POST['plan_id'];
         mysqli_query($db, "
         INSERT INTO `account`(`amount`, `info`)
-        VALUES (".-$amount.",".$info.")
+        VALUES (".-$amount.",'".$info."')
         ");
         mysqli_query($db, "
                 UPDATE `plans` SET `status`='".$status."'
@@ -105,7 +105,8 @@ if (isset($_POST['plan_id'])) {
         SELECT * FROM `plan_products` 
         WHERE `plan_id`=".$_POST['plan_id']);
         while ($fetch_plan_product = mysqli_fetch_assoc($select_plan_products)) {
-            mysqli_query($db, "
+            if ($fetch_plan_product['total_amount'] > 0) {
+                mysqli_query($db, "
             INSERT INTO `log_products`(`product_id`, `product_amount`) 
             VALUES (".$fetch_plan_product['product_id'].",".$fetch_plan_product['total_amount'].")
             ");
@@ -117,6 +118,7 @@ if (isset($_POST['plan_id'])) {
             `product_amount`= ".$fetch_products['product_amount']+$fetch_plan_product['total_amount']."
             WHERE `product_id`=".$fetch_plan_product['product_id'].")
             ");
+            }
         }
         $status = "ทำสินค้าเสร็จสิ้น";
         mysqli_query($db, "
@@ -128,28 +130,33 @@ if (isset($_POST['plan_id'])) {
         SELECT * FROM `plan_products` 
         WHERE `plan_id`=".$_POST['plan_id']);
         while ($fetch_plan_product = mysqli_fetch_assoc($select_plan_products)) {
+            $fetch_products = mysqli_fetch_assoc(mysqli_query($db,"
+            SELECT * FROM `products` 
+            WHERE `product_id`=".$fetch_plan_product['product_id']));
+            if ($fetch_plan_product['order_amount'] > 0) {
+            echo "
+            UPDATE `products` SET
+            `product_amount`= ".$fetch_products['product_amount']-$fetch_plan_product['order_amount']."
+            WHERE `product_id`=".$fetch_plan_product['product_id'];
+            mysqli_query($db, "
+            UPDATE `products` SET
+            `product_amount`= ".$fetch_products['product_amount']-$fetch_plan_product['order_amount']."
+            WHERE `product_id`=".$fetch_plan_product['product_id']);
             mysqli_query($db, "
             INSERT INTO `log_products`(`product_id`, `product_amount`) 
             VALUES (".$fetch_plan_product['product_id'].",".-$fetch_plan_product['order_amount'].")
             ");
-            $fetch_products = mysqli_fetch_assoc(mysqli_query($db,"
-            SELECT * FROM `products` 
-            WHERE `product_id`=".$fetch_plan_product['product_id']));
-            mysqli_query($db, "
-            UPDATE `products` SET
-            `product_amount`= ".$fetch_products['product_amount']-$fetch_plan_product['order_amount']."
-            WHERE `product_id`=".$fetch_plan_product['product_id'].")
-            ");
+            }
         }
         $select_plan_orders = mysqli_query($db,"
         SELECT * FROM `plan_orders` 
         WHERE `plan_id`=".$_POST['plan_id']);
-        $order_status = 4;
+        $order_status = 3;
         while ($fetch_plan_order = mysqli_fetch_assoc($select_plan_orders)) {
             mysqli_query($db, "
             UPDATE `orders` SET
             `status`= ".$order_status."
-            WHERE `id`=".$fetch_plan_order['order_id'].")
+            WHERE `id`=".$fetch_plan_order['order_id']."
             ");
         }
         $status = "เสร็จสิ้น";

@@ -31,7 +31,7 @@ else {
     <div class="col-8"></div>    
     <div class="col-2">
         <div class="card text-dark text-center bg-white border border-white">
-            <h5 class="card-title mt-2">สถานะ : 
+            <h5 class="card-title mt-2">สถานะ :
                 <?php if ($order_status[$order['status']] === "ยกเลิกรายการ") { ?>
                     <p class="text-danger">
                 <?php } else if ($order_status[$order['status']] === "เสร็จสิ้น") { ?>
@@ -105,26 +105,16 @@ else {
                 <?php
                 if (checkrole('admin')) {?>
                     <div  class="<?php
-                    if ($order['status'] == 1) {
+                    if ($order['status'] != 5) {
                         echo "visually-hidden";
                      }?>">
-                        <h5 class="card-title mt-2">เปลี่ยนสถานะ</h5>
+                        <center>
+                        <h5 class="card-title mt-2">ยืนยันการจัดส่ง</h5>
                         <div class="mb-2">
-                            <label class="mb-2">สถานะที่จะเปลี่ยน <br> ไม่สามารถเปลี่ยนไปเป็นสถานะต่ำกว่าได้</label>
-                            <select class="form-select form-select-sm" name="select_status" aria-label=".form-select-sm example">
-                            <?php 
-                                foreach($order_status as $status => $status_text) { ?>
-                                    <option value="<?= $status ?>" <?php if ($status == $order['status']) {
-                                        echo "selected";
-                                    }
-                                    ?>><?=$status_text?></option>
-                            <?php    }
-                            ?>
-                            </select>
-                            <center>
-                            <button class="btn btn-danger mt-2 mb-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" type="submit" name="change_status">เปลี่ยนสถานะ</button>    
-                            </center>
+                            <input class="form-control" type="hidden" name="select_status" value="<?= $order['status']+1; ?>">
+                            <button class="btn btn-danger mt-2 mb-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" type="submit" name="change_status">จัดส่งเสร็จสิ้น</button>        
                         </div>
+                        </center>
                     </div>
                 <?php }
                 ?>

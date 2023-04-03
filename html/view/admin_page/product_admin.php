@@ -72,25 +72,27 @@ checkadmin();
                     <?=$fetch_product['product_status']?>
                 </th>
                 <th>
-                    <form action="" method="post" enctype="multipart/form-data">
-                      <input type="hidden" name="product_id" id="product_id" value="<?=$fetch_product['product_id']?>">
-                      <input type="hidden" name="product_status" id="product_status" value="<?=$fetch_product['product_status']?>">
-                      <?php
-                      if ($fetch_product['product_status'] === "active") 
-                      {?>
-                        <input type="submit" class="btn btn-danger" value="ปิดการขาย" name="change_status">
-                      <?php }
-                      else { ?>
-                        <input type="submit" class="btn btn-success" value="เปิดการขาย" name="change_status">
-                      <?php }
-                      ?>
-                    </form>
+                        <form action="" method="post" enctype="multipart/form-data">
+                        <input type="hidden" name="product_id" id="product_id" value="<?=$fetch_product['product_id']?>">
+                        <input type="hidden" name="product_status" id="product_status" value="<?=$fetch_product['product_status']?>">
+                        <?php
+                        if ($fetch_product['product_status'] === "active") 
+                        {?>
+                          <input type="submit" class="btn btn-danger" value="ปิดการขาย" name="change_status">
+                        <?php }
+                        else { ?>
+                          <input type="submit" class="btn btn-success" value="เปิดการขาย" name="change_status">
+                        <?php }
+                        ?>
+                        </form>
+                    <br>
                     <a class="btn btn-warning" href="../../view/admin_page/product_material.php?id=<?=$fetch_product['product_id']?>">ตรวจสอบวัตถุดิบ</a>
-                    <!-- Button trigger modal -->
+                    <br><br>
+                    <a class="btn btn-dark" href="../../view/log/log_products.php?id=<?=$fetch_product['product_id']?>">ตรวจสอบการเข้าออก</a>
+                    <br><br>
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editproductModal<?=$fetch_product['product_id']?>">
                       แก้ไขผลิตภัณฑ์
                     </button>
-                    <!-- Modal -->
                     <div class="modal fade" id="editproductModal<?=$fetch_product['product_id']?>" tabindex="-1" aria-labelledby="editproductModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -119,7 +121,6 @@ checkadmin();
                             <input class="form-control" type="file" name="product_img" id="product_img" accept="image/png, image/jpg, image/jpeg">
                             <label for="formFile" class="form-label text-danger">เพิ่มหรือไม่ก็ได้</label>
                           </div>
-                          <br>
                           </div>
                           <div class="modal-footer">
                             <button class="btn btn-primary" type="submit" name="edit_prod">แก้ไขผลิตภัณฑ์</button>
@@ -128,11 +129,10 @@ checkadmin();
                         </div>
                       </div>
                     </div>
-                    <!-- Button trigger modal -->
+                    <br><br>
                     <button type="button" class="btn btn-info" data-bs-toggle="modal" data-bs-target="#editproductcategoryModal<?=$fetch_product['product_id']?>">
                       แก้ไขประเภทผลิตภัณฑ์
                     </button>
-                    <!-- Modal -->
                     <div class="modal fade" id="editproductcategoryModal<?=$fetch_product['product_id']?>" tabindex="-1" aria-labelledby="editproductcategoryModalLabel" aria-hidden="true">
                       <div class="modal-dialog">
                         <div class="modal-content">
@@ -160,7 +160,6 @@ checkadmin();
                             }
                             ?>
                           </select>
-                          <br>
                           </div>
                           <div class="modal-footer">
                             <button class="btn btn-primary" type="submit" name="edit_prod_cate">แก้ไข</button>

@@ -21,16 +21,19 @@ else {
     </div>
     <div class="col-2">
         <div class="mb-2 d-flex flex-row-reverse gap-3">
+        <h5>สถานะ : <?= $plans['status'] ?></h5>
+        </div>
+        <div class="mb-2 d-flex flex-row-reverse gap-3">
             <?php require 'change_plan_status.php'; ?>
         </div>
     </div>
 </div>
-
+<?php if($plans['status'] == 'เตรียมแผน'){?>
 <div class="mb-2 d-flex flex-row-reverse gap-3"> 
 <?php require 'add_plan_order_modal.php'; ?>
 <?php require 'add_plan_product_modal.php'; ?>
 </div>
-
+<?php }?>
 <div class="row mb-2">
     <div class="col-4">
     <?php require 'order_list.php'; ?>
