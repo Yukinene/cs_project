@@ -8,7 +8,7 @@ checkadmin();
 <title>ระบบจัดการวัตถุดิบ (สำหรับผู้จัดการระบบ)</title>
 <h2>วัตถุดิบ</h2>
     <div class="mb-2 d-flex flex-row-reverse"> 
-      <?php include 'add_material_modal.php'; ?>
+      <?php include 'modal/add_material_modal.php'; ?>
     </div>
     
 	  <table id="MaterialTable" class="table table-striped" style="width:100%">

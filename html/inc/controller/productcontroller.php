@@ -1,5 +1,6 @@
-<?php 
-  require 'session.php';
+<?php
+
+  include __DIR__.'/../session.php';
 
   if (isset($_POST['add_prod'])) {
       // receive all input values from the form
