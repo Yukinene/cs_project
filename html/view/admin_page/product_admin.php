@@ -1,14 +1,14 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/productcontroller.php';
+require '../../inc/controller/productcontroller.php';
 require '../../inc/errors.php';
 require '../../inc/complete.php';
 checkadmin();
 ?>
 <title>ระบบจัดการสินค้า (สำหรับผู้จัดการระบบ)</title>
 <h2>สินค้า</h2>
-    <div class="mb-2 d-flex flex-row-reverse"> 
-      <?php include 'add_product_modal.php'; ?>
+    <div class="mb-2 d-flex flex-row-reverse">
+      <?php include 'modal/add_product_modal.php'; ?>
     </div>
     
 	  <table id="ProductTable" class="table table-striped" style="width:100%">
@@ -88,7 +88,7 @@ checkadmin();
                     <br>
                     <a class="btn btn-warning" href="../../view/admin_page/product_material.php?id=<?=$fetch_product['product_id']?>">ตรวจสอบวัตถุดิบ</a>
                     <br><br>
-                    <a class="btn btn-dark" href="../../view/log/log_products.php?id=<?=$fetch_product['product_id']?>">ตรวจสอบการเข้าออก</a>
+                    <a class="btn btn-dark" href="../../view/log_page/log_products.php?id=<?=$fetch_product['product_id']?>">ตรวจสอบการเข้าออก</a>
                     <br><br>
                     <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editproductModal<?=$fetch_product['product_id']?>">
                       แก้ไขผลิตภัณฑ์

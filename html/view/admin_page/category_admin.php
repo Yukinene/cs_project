@@ -39,7 +39,7 @@ if (isset($_POST['del_cate'])) {
     include '../../inc/errors.php'; 
 ?>
 <div class="mb-2 d-flex flex-row-reverse"> 
-      <?php include 'add_category_modal.php'; ?>
+      <?php include 'modal/add_category_modal.php'; ?>
 </div>
 
 <?php

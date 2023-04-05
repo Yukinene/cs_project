@@ -1,6 +1,6 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/ordercontroller.php';
+require '../../inc/controller/ordercontroller.php';
 $username = $_SESSION['username'];
 $select_user = mysqli_query($db, "SELECT * FROM users WHERE username='$username'");
 $user = mysqli_fetch_assoc($select_user);
@@ -201,7 +201,7 @@ else {
                     <?php }
                     else { 
                         $order_payments = mysqli_query($db,"SELECT * FROM `payment` WHERE `order_id` = ".$_GET['id']."");
-                        include 'add_payment_modal.php';
+                        include 'modal/add_payment_modal.php';
                         ?>
                         
                      <?php }
@@ -214,7 +214,7 @@ else {
                 <div class="card text-dark bg-light">
                        <?php 
                         $order_shipments = mysqli_query($db,"SELECT * FROM `shipment` WHERE `order_id` = ".$_GET['id']."");
-                        include 'add_shipment_modal.php';
+                        include 'modal/add_shipment_modal.php';
                         ?>
                         
                 </div>

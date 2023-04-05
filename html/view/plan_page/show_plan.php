@@ -1,6 +1,6 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/plancontroller.php';
+require '../../inc/controller/plancontroller.php';
 checkadmin();
 if (isset($_GET['id'])) {
     $select_plan = mysqli_query($db,"SELECT * FROM `plans` WHERE `plan_id` = ".$_GET['id']."");
@@ -24,25 +24,25 @@ else {
         <h5>สถานะ : <?= $plans['status'] ?></h5>
         </div>
         <div class="mb-2 d-flex flex-row-reverse gap-3">
-            <?php require 'change_plan_status.php'; ?>
+            <?php require 'post/change_plan_status.php'; ?>
         </div>
     </div>
 </div>
 <?php if($plans['status'] == 'เตรียมแผน'){?>
 <div class="mb-2 d-flex flex-row-reverse gap-3"> 
-<?php require 'add_plan_order_modal.php'; ?>
-<?php require 'add_plan_product_modal.php'; ?>
+<?php require 'modal/add_plan_order_modal.php'; ?>
+<?php require 'modal/add_plan_product_modal.php'; ?>
 </div>
 <?php }?>
 <div class="row mb-2">
     <div class="col-4">
-    <?php require 'order_list.php'; ?>
+    <?php require 'table_list/order_list.php'; ?>
     </div>
     <div class="col-8">
-        <?php require 'product_list.php'; ?>
+        <?php require 'table_list/product_list.php'; ?>
     </div>
     <div class="col-12">
-        <?php require 'material_list.php'; ?>
+        <?php require 'table_list/material_list.php'; ?>
     </div>
 </div>
 <?php

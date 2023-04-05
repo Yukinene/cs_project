@@ -69,7 +69,7 @@ if (isset($_POST['edit_paym'])) {
     include '../../inc/errors.php'; 
 ?>
 <div class="mb-2 d-flex flex-row-reverse"> 
-      <?php include 'add_payment_method_modal.php'; ?>
+      <?php include 'modal/add_payment_method_modal.php'; ?>
 </div>
 
 <?php

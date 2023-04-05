@@ -1,6 +1,6 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/plancontroller.php';
+require '../../inc/controller/plancontroller.php';
 require '../../inc/errors.php';
 require '../../inc/complete.php';
 checkadmin();
@@ -19,7 +19,7 @@ $check_plans = mysqli_query($db, "SELECT * FROM `plans` WHERE `status` = 'เส
         </form>
     </div>
   <?php
-    require '../plan/plan_list.php';
+    require '../plan_page/plan_list.php';
   ?>
 
 
