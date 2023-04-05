@@ -1,10 +1,6 @@
 <?php
-  if (count($completes) > 0) : ?>
-  <div class="success">
-  	<?php foreach ($completes as $complete) : ?>
-		<div class="alert alert-success" role="alert">
-		สำเร็จ : <?php echo $complete ?>
-		</div>
-  	<?php endforeach ?>
-  </div>
-<?php  endif ?>
+if (count($completes) > 0) :
+  	foreach ($completes as $complete) :
+		echo "<script>alert('$complete');</script>";
+  	endforeach
+endif ?>
