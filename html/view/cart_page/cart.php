@@ -1,7 +1,7 @@
 <?php
 require '../../inc/header.php';
 require '../../inc/cart.php';
-require '../../inc/ordercontroller.php';
+require '../../inc/controller/ordercontroller.php';
 if (!(isset($cart))) {
   $cart = array();
 }

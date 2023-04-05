@@ -1,6 +1,6 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/materialcontroller.php';
+require '../../inc/controller/materialcontroller.php';
 require '../../inc/errors.php';
 require '../../inc/complete.php';
 checkadmin();
@@ -53,7 +53,7 @@ checkadmin();
                     <?=$fetch_material['bought_price']?>
                 </th>
                 <th>
-                  <a class="btn btn-dark" href="../../view/log/log_materials.php?id=<?=$fetch_material['material_id']?>">ตรวจสอบการเข้าออก</a>
+                  <a class="btn btn-dark" href="../../view/log_page/log_materials.php?id=<?=$fetch_material['material_id']?>">ตรวจสอบการเข้าออก</a>
                     <br><br>
                     <!-- Button trigger modal -->
                     <br>

@@ -1,6 +1,6 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/usercontroller.php';
+require '../../inc/controller/usercontroller.php';
 ?>
 <title>เข้าสู่ระบบ</title>
 <div class="container">

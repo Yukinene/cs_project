@@ -1,13 +1,12 @@
 <?php
 require '../../inc/header.php';
-require '../../inc/usercontroller.php';
+require '../../inc/controller/usercontroller.php';
 checkuser();
 $username = $_SESSION['username'];
 $user_info_query = "SELECT * FROM users WHERE username='$username'";
 $result = mysqli_query($db, $user_info_query);
 $user = mysqli_fetch_assoc($result);
 $edit_profile = array("name", "surname", "email", "password_new", "password_old");
-$month = array("","มกราคม.","กุมภาพันธ์","มีนาคม","เมษายน.","พฤษภาคม","มิถุนายน","กรกฏาคม","สิงหาคม","กันยายน","ตุลาคม","พฤศจิกายน","ธันวาคม");
 ?>
 <title>Profile</title>
 <div class="container">

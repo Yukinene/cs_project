@@ -57,7 +57,7 @@ if(mysqli_num_rows($select_plan_products) > 0){
                 </th>
 				        <th>
                     <?php
-                      require 'del_plan_product_modal.php';
+                      require '../modal/del_plan_product_modal.php';
                     ?>
                 </th>
                 <?php
