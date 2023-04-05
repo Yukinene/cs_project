@@ -1,5 +1,5 @@
 <?php 
-  require 'session.php';
+  include __DIR__.'/../session.php';
 
   if (isset($_POST['add_mate'])) {
       // receive all input values from the form

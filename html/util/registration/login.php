@@ -20,11 +20,11 @@ require '../../inc/controller/usercontroller.php';
 	?>
   	<div class="form-group">
   		<label>ชื่อผู้ใช้</label>
-  		<input class="form-control" type="text" name="username" >
+  		<input class="form-control" type="text" name="username" required>
   	</div>
   	<div class="form-group">
   		<label>รหัสผ่าน</label>
-  		<input class="form-control" type="password" name="password">
+  		<input class="form-control" type="password" name="password" required>
   	</div>
 	<br>
 	  <button type="submit" class="btn btn-primary" name="login_user">เข้าสู่ระบบ</button>

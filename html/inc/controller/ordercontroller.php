@@ -1,7 +1,4 @@
 <?php
-// require '../../inc/initialize.php';
-// require '../../inc/session.php';
-// require '../../inc/cart.php';
 if (isset($_POST['add_order'])) {
     // receive all input values from the form
     $user_id = mysqli_real_escape_string($db, $_POST['user_id']);

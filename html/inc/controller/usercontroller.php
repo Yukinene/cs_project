@@ -1,5 +1,5 @@
 <?php 
-  require 'session.php';
+  include __DIR__.'/../session.php';
 
   // REGISTER USER
   if (isset($_POST['reg_user'])) {
@@ -48,7 +48,6 @@
   	mysqli_query($db, $query);
   	$_SESSION['username'] = $username;
 	  $_SESSION['role'] = $role;
-  	$_SESSION['success'] = "ล็อกอินสำเร็จ";
     header('location: ../../index.php');
   }
 }
@@ -74,7 +73,6 @@
         $result = mysqli_fetch_array($results);
         $_SESSION['username'] = $username;
         $_SESSION['role'] = $result['role'];
-        $_SESSION['success'] = "ล็อกอินสำเร็จ";
         header('location: ../../index.php');
       }else {
         array_push($errors, "username หรือ password ผิดพลาดกรุณาลองอีกครั้ง");

@@ -1,5 +1,5 @@
-<?php  if (count($errors) > 0) :
-  	foreach ($errors as $error) :
+<?php  if (count($errors) > 0) {
+  	foreach ($errors as $error) {
 		echo "<script>alert('$error');</script>";
-  	endforeach
-endif ?>
+	}
+}?>
