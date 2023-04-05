@@ -26,6 +26,9 @@ require '../../inc/controller/usercontroller.php';
   		<label>รหัสผ่าน</label>
   		<input class="form-control" type="password" name="password" required>
   	</div>
+	<div class="form-group mt-2">
+	<div class="cf-turnstile" data-sitekey="0x4AAAAAAADwjCCrKbo0LqwV" data-callback="javascriptCallback"></div>
+	</div>
 	<br>
 	  <button type="submit" class="btn btn-primary" name="login_user">เข้าสู่ระบบ</button>
   	<p>

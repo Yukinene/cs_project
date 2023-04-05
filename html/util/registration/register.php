@@ -43,6 +43,9 @@ require '../../inc/controller/usercontroller.php';
 					<label class="text-start">ยืนยันรหัสผ่าน</label>
 					<input class="form-control" type="password" name="password_2" required>
 					</div>
+					<div class="form-group mt-2">
+					<div class="cf-turnstile" data-sitekey="0x4AAAAAAADwjCCrKbo0LqwV" data-callback="javascriptCallback"></div>
+					</div>
 					<br>
 					<button class="btn btn-primary" type="submit" name="reg_user">สมัครสมาชิก</button>
 					<p>
