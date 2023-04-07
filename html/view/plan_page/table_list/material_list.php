@@ -36,7 +36,10 @@ if(mysqli_num_rows($select_plan_materials) > 0){
                     <?=$fetch_plan_materials['material_amount']?>
                 </th>
                 <th>
-                    <?=$fetch_plan_materials['material_amount_f']?>
+                    <?php if ($fetch_plan_materials['material_amount_f'] > 0) {
+                        echo $fetch_plan_materials['material_amount_f'];
+                    } 
+                    else { echo 0; }?>
                 </th>
             </tr>
             <?php

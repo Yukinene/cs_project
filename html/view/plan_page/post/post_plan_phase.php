@@ -1,5 +1,7 @@
 <?php
-include '../../inc/initialize.php';
+include '../../../inc/initialize.php';
+include '../../../inc/completes.php';
+
 if (isset($_POST['plan_id'])) {
     if (isset($_POST['comfirm_plan_phase_1'])) {
         $materials = array();
@@ -59,7 +61,8 @@ if (isset($_POST['plan_id'])) {
         SELECT * FROM `plan_materials` 
         WHERE `plan_id`=".$_POST['plan_id']);
         while ($fetch_plan_material = mysqli_fetch_assoc($select_plan_materials)) {
-            mysqli_query($db, "
+            if ($fetch_plan_material['material_amount_f'] > 0) {
+                mysqli_query($db, "
             INSERT INTO `log_materials`(`material_id`, `material_amount`) 
             VALUES (".$fetch_plan_material['material_id'].",".$fetch_plan_material['material_amount_f'].")
             ");
@@ -69,16 +72,18 @@ if (isset($_POST['plan_id'])) {
             mysqli_query($db, "
             UPDATE `materials` SET
             `material_amount`= ".$fetch_materials['material_amount']+$fetch_plan_material['material_amount_f']."
-            WHERE `material_id`=".$fetch_plan_material['material_id'].")
-            ");
+            WHERE `material_id`=".$fetch_plan_material['material_id']);
             $amount += ($fetch_plan_material['material_amount_f']*$fetch_materials['bought_price']);
+            }
         }
         $status = "กำลังทำสินค้า";
         $info = "ซื้อวัตถุดิบในแผนที่ ".$_POST['plan_id'];
-        mysqli_query($db, "
+        if ($amount > 0) {
+            mysqli_query($db, "
         INSERT INTO `account`(`amount`, `info`)
         VALUES (".-$amount.",'".$info."')
         ");
+        }
         mysqli_query($db, "
                 UPDATE `plans` SET `status`='".$status."'
                 WHERE `plan_id`=".$_POST['plan_id']);
@@ -98,8 +103,8 @@ if (isset($_POST['plan_id'])) {
             mysqli_query($db, "
             UPDATE `materials` SET
             `material_amount`= ".$fetch_materials['material_amount']-$fetch_plan_material['material_amount']."
-            WHERE `material_id`=".$fetch_plan_material['material_id'].")
-            ");
+            WHERE `material_id`=".$fetch_plan_material['material_id']
+            );
         }
         $select_plan_products = mysqli_query($db,"
         SELECT * FROM `plan_products` 
@@ -116,8 +121,8 @@ if (isset($_POST['plan_id'])) {
             mysqli_query($db, "
             UPDATE `products` SET
             `product_amount`= ".$fetch_products['product_amount']+$fetch_plan_product['total_amount']."
-            WHERE `product_id`=".$fetch_plan_product['product_id'].")
-            ");
+            WHERE `product_id`=".$fetch_plan_product['product_id']
+            );
             }
         }
         $status = "ทำสินค้าเสร็จสิ้น";
@@ -164,7 +169,8 @@ if (isset($_POST['plan_id'])) {
                 UPDATE `plans` SET `status`='".$status."'
                 WHERE `plan_id`=".$_POST['plan_id']);
     }
-    array_push($completes, "เปลี่ยนสถานะสำเร็จ");
-    header('location: show_plan.php?id='.$_POST['plan_id']);
+    echo "<script>alert('เปลี่ยนสถานะสำเร็จ');
+    window.location='../show_plan.php?id=".$_POST['plan_id']."';
+    </script>";
 }
 ?>

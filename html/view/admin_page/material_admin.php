@@ -1,8 +1,8 @@
 <?php
 require '../../inc/header.php';
 require '../../inc/controller/materialcontroller.php';
-require '../../inc/errors.php';
-require '../../inc/complete.php';
+include '../../inc/completes.php';
+include '../../inc/errors.php';
 checkadmin();
 ?>
 <title>ระบบจัดการวัตถุดิบ (สำหรับผู้จัดการระบบ)</title>

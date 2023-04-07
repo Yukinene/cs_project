@@ -1,14 +1,13 @@
 <?php
-require '../../inc/header.php';
-checkadmin();
-require '../../inc/controller/tiercontroller.php';
-require '../../inc/controller/freightcontroller.php';
+  require '../../inc/header.php';
+  checkadmin();
+  require '../../inc/controller/tiercontroller.php';
+  require '../../inc/controller/freightcontroller.php';
+	include '../../inc/completes.php';
+	include '../../inc/errors.php';
 ?>
 <title>ระบบจัดการระดับ (สำหรับผู้จัดการระบบ)</title>
-<?php 
-	include '../../inc/complete.php';
-  include '../../inc/errors.php'; 
-?>
+
 <div class="mb-2 d-flex flex-row-reverse"> 
       <?php include 'modal/freight_modal.php'; ?>
       <?php include 'modal/add_tier_modal.php'; ?>

@@ -49,6 +49,7 @@ if(isset($_POST['remove_quantity'])){
     $item = $_POST['product_id'];
     if(isset($cart[$item])) {
       unset($cart[$item]);
+      array_push($completes, "ยกเลิกการสั่งซื้อสินค้าในรถเข็นเรียบร้อย");
     }
     $_SESSION['cart'] = $cart;
   }

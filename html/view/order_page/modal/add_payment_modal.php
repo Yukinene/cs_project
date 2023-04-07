@@ -12,7 +12,7 @@
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-      <form method="post" enctype="multipart/form-data" action="">
+      <form method="post" enctype="multipart/form-data" action="post/post_order.php">
                                 <input class="form-control" type="hidden" name="user_id" value="<?= $user['id']; ?>">
                                 <input class="form-control" type="hidden" name="order_id" value="<?= $order['id']; ?>">
                         <?php if(mysqli_num_rows($order_payments) < 1){

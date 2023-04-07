@@ -1,6 +1,8 @@
 <?php
 require '../../inc/header.php';
 require '../../inc/controller/usercontroller.php';
+include '../../inc/completes.php';
+include '../../inc/errors.php';
 checkuser();
 $username = $_SESSION['username'];
 $user_info_query = "SELECT * FROM users WHERE username='$username'";
@@ -25,9 +27,6 @@ $edit_profile = array("name", "surname", "email", "password_new", "password_old"
 					<label class="form-check-label" for="profileSwitchCheck">แก้ไขข้อมูลผู้ใช้</label>
 				</div>
 				<form method="post" action="">
-					<?php 
-					include '../../inc/errors.php'; 
-					?>
 					<div class="row mb-2">  
 						<label class="col-sm-2 col-sm-2 col-form-label">ชื่อผู้ใช้</label>
 						<div class="col-sm-10">
@@ -37,38 +36,35 @@ $edit_profile = array("name", "surname", "email", "password_new", "password_old"
 						<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">ขื่อ</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="text" name="name" value="<?= $user['name']; ?>">
+						<input class="form-control" type="text" name="name" value="<?= $user['name']; ?>" required>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">นามสกุล</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="text" name="surname" value="<?= $user['surname']; ?>">
+						<input class="form-control" type="text" name="surname" value="<?= $user['surname']; ?>" required>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">อีเมล</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="email" name="email" value="<?= $user['email']; ?>">
+						<input class="form-control" type="email" name="email" value="<?= $user['email']; ?>" required>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">รหัสผ่านใหม่</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="password" name="password_new">
+						<input class="form-control" type="password" name="password_new" required>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">รหัสผ่านเก่า</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="password" name="password_old">
+						<input class="form-control" type="password" name="password_old" required>
 						</div>
 					</div>
 					<br>
 					<button class="btn btn-primary mb-2" type="submit" name="cha_info">แก้ไขข้อมูล</button>
-					<?php 
-					include '../../inc/complete.php'; 
-					?>
 				</form>
 			</div>
 			</div>

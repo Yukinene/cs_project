@@ -21,8 +21,8 @@ else {
 
 ?>
 <?php 
-	include '../../inc/complete.php';
-    include '../../inc/errors.php'; 
+	include '../../inc/completes.php';
+	include '../../inc/errors.php';
 ?>
 <div class="row mb-2">
     <div class="col-2">
@@ -96,7 +96,7 @@ else {
         </div>
     <div class="mt-3 col-6">
         <div class="card text-dark bg-light">
-            <form method="post" enctype="multipart/form-data" action="">
+            <form method="post" enctype="multipart/form-data" action="post/post_order.php">
                 <input class="form-control" type="hidden" name="order_id" value="<?= $order['id']; ?>">
                 <input class="form-control" type="hidden" name="order_user" value="<?= $order['user_id']; ?>">
                 <input class="form-control" type="hidden" name="order_amount" value="<?= $order['amount']; ?>">
@@ -124,13 +124,12 @@ else {
                     if (checkrole('admin')) {
                         echo "visually-hidden";
                      }?>">
-                    
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" value="confirm" name="cancel_order_Check" id="cancel_order_Check">
-                        <label class="form-check-label" for="flexCheckDefault">
-                            ยืนยันการยกเลิก
-                        </label>
-                    </div>
+                        <div class="form-check" style="text-align:center">
+                            <label class="form-check-label" for="flexCheckDefault">
+                                <input class="form-check-input align-middle" type="checkbox" value="confirm" name="cancel_order_Check" id="cancel_order_Check">
+                                ยืนยันการยกเลิก
+                            </label>
+                            </div>
                     <center>
                     <button class="btn btn-danger mb-2" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;"  type="submit" name="cancel_order">ยกเลิกการสั่งซื้อ</button>
                     </center>

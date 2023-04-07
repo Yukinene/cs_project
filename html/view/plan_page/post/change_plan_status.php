@@ -1,4 +1,4 @@
-<form action="post_plan_phase.php" method="post">
+<form action="post/post_plan_phase.php" method="post">
 <input type="hidden" name="plan_id" value="<?=
 $_GET['id']
 ?>">

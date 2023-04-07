@@ -18,5 +18,5 @@ if (checkusername()) {
 else {
     require 'intro.php';
 }
-require '../../inc/footer.php';
+require_once '../../inc/footer.php';
 ?>

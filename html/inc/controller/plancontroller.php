@@ -1,12 +1,9 @@
 <?php
 if (isset($_POST['add_plan']))
     {
-        $check_plans = mysqli_query($db, "SELECT * FROM `plans`");
-        if(mysqli_num_rows($check_plans) <= 0)
-        {
-            $status = 'เตรียมแผน';
-            mysqli_query($db, "INSERT INTO `plans`(`status`) VALUES ('".$status."')");
-        }
+        $status = 'เตรียมแผน';
+        mysqli_query($db, "INSERT INTO `plans`(`status`) VALUES ('".$status."')");
+        array_push($completes, "เพิ่มแผนการผลิตสำเร็จ");
     }
 if (isset($_GET['id'])) {
     if (isset($_POST['add_planorder'])) {

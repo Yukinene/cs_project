@@ -4,8 +4,8 @@ require '../../inc/header.php';
 checkadmin();
 require '../../inc/controller/productmaterialcontroller.php';
 
-require '../../inc/errors.php';
-require '../../inc/complete.php';
+include '../../inc/completes.php';
+include '../../inc/errors.php';
 ?>
 
 <title>ระบบจัดการวัตถุดิบสินค้า (สำหรับผู้จัดการระบบ)</title>
@@ -45,41 +45,17 @@ require '../../inc/complete.php';
                 </th>
                 <th><?=$fetch_product_materials['material_amount']?></th>
                 <th>
-                <form action="" method="post" enctype="multipart/form-data">
-                      <input type="hidden" name="product_id" id="product_id" value="<?=$fetch_product_materials['product_id']?>">
-                      <input type="hidden" name="material_id" id="material_id" value="<?=$fetch_product_materials['material_id']?>">
-                      <input type="submit" class="btn btn-danger" value="ลบวัตถุดิบ" name="del_pmat">
-                </form>
-                <!-- Button trigger modal -->
-                <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addproductmaterialModal<?=$fetch_product_materials['material_id']?>">
-                  แก้ไขวัตถุดิบ
-                </button>
-
-                <!-- Modal -->
-                <div class="modal fade" id="addproductmaterialModal<?=$fetch_product_materials['material_id']?>" tabindex="-1" aria-labelledby="addproductmaterialModalLabel<?=$fetch_product_materials['material_id']?>" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h1 class="modal-title fs-5" id="addproductmaterialModalLabel<?=$fetch_product_materials['material_id']?>">แก้ไขวัตถุดิบ - <?=$fetch_product_materials['material_id']?></h1>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <form method="post" action="" enctype="multipart/form-data">
-                                    <input type="hidden" name="product_id" value="<?=$fetch_product_materials['product_id']?>">
-                                    <input type="hidden" name="material_id" value="<?=$fetch_product_materials['material_id']?>">
-                                <div class="form-group">
-                                    <label>จำนวนที่ใช้ (กิโลกรัม)</label>
-                                    <input class="form-control" type="number" name="material_amount" min="0" value="<?=$fetch_product_materials['material_amount']?>" step=any required>
-                                </div>
-                                <br>
-                            </div>
-                            <div class="modal-footer">
-                                <button class="btn btn-primary" type="submit" name="edit_pmat">แก้ไข</button>
-                            </div>
-                            </form>
-                      </div>
-                    </div>
+                <div class="mb-2">
+                  <form action="" method="post" enctype="multipart/form-data">
+                    <input type="hidden" name="product_id" id="product_id" value="<?=$fetch_product_materials['product_id']?>">
+                    <input type="hidden" name="material_id" id="material_id" value="<?=$fetch_product_materials['material_id']?>">
+                    <input type="submit" class="btn btn-danger" value="ลบวัตถุดิบ" name="del_pmat">
+                  </form>
                 </div>
+
+                <?php
+                  require "modal/product_material_modal.php";
+                ?>
                 </th>
             </tr>
             

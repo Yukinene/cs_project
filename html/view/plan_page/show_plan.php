@@ -9,12 +9,11 @@ if (isset($_GET['id'])) {
 else {
     header('location: ../../index.php');
 }
+	include '../../inc/completes.php';
+	include '../../inc/errors.php';
 ?>
 <title>แผนการผลิตที่ <?= $plans['plan_id'] ?></title>
-<?php 
-	include '../../inc/complete.php';
-    include '../../inc/errors.php'; 
-?>
+
 <div class="row mb-2">
     <div class="col-10">
         <h2>แผนการผลิตที่ <?= $plans['plan_id'] ?></h2>
@@ -36,7 +35,7 @@ else {
 <?php }?>
 <div class="row mb-2">
     <div class="col-4">
-    <?php require 'table_list/order_list.php'; ?>
+        <?php require 'table_list/order_list.php'; ?>
     </div>
     <div class="col-8">
         <?php require 'table_list/product_list.php'; ?>

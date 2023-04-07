@@ -32,12 +32,11 @@ if (isset($_POST['del_cate'])) {
     array_push($errors, "ประเภทสินค้านี้ไม่มีอยู่ในระบบ");
   }
 }
+  include '../../inc/completes.php';
+  include '../../inc/errors.php';
 ?>
 <title>ระบบจัดการประเภทสินค้า (สำหรับผู้จัดการระบบ)</title>
-<?php 
-	include '../../inc/complete.php';
-    include '../../inc/errors.php'; 
-?>
+
 <div class="mb-2 d-flex flex-row-reverse"> 
       <?php include 'modal/add_category_modal.php'; ?>
 </div>

@@ -1,3 +1,8 @@
+<?php
+  require "post/add_plan.php";
+  $select_plans = mysqli_query($db, "SELECT * FROM `plans`");
+?>
+
 <table id="PlanTable" class="table table-striped" style="width:100%">
         <thead>
 			<center>
@@ -33,7 +38,7 @@
                     <?=$fetch_plan['status']?>
                 </th>
                 <th>
-                    <?= '<a class="btn btn-primary" href="../plan/show_plan.php?id='.$fetch_plan['plan_id'].'">ดู</a>' ?>
+                    <?= '<a class="btn btn-primary" href="../plan_page/show_plan.php?id='.$fetch_plan['plan_id'].'">ดู</a>' ?>
                 </th>
             </tr>
             <?php
@@ -41,10 +46,9 @@
             }
         ?>
         </tbody>
-    </table>
-  </div>
+</table>
 
-  <script>
+<script>
         $(document).ready(function () {
             $("#PlanTable").DataTable({
               "order": [[ 0, "desc" ]],

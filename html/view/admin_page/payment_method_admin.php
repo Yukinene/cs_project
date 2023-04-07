@@ -62,12 +62,11 @@ if (isset($_POST['edit_paym'])) {
     
   }
 }
+  include '../../inc/completes.php';
+  include '../../inc/errors.php';
 ?>
 <title>ระบบจัดการช่องทางการเงิน (สำหรับผู้จัดการระบบ)</title>
-<?php 
-	include '../../inc/complete.php';
-    include '../../inc/errors.php'; 
-?>
+
 <div class="mb-2 d-flex flex-row-reverse"> 
       <?php include 'modal/add_payment_method_modal.php'; ?>
 </div>
@@ -108,9 +107,17 @@ if (isset($_POST['edit_paym'])) {
                     <?=$fetch_payment_list['description']?>
                 </th>
                 <th>
-                    <?=$fetch_payment_list['payment_status']?>
+                    <?php
+                    if ($fetch_payment_list['payment_status'] === "active") {
+                      echo "เปิดการใช้งาน";
+                    }
+                    else {
+                      echo "ปิดการใช้งาน";
+                    }
+                    ?>
                 </th>
                 <th>
+                <div class="mb-3">
                 <form action="" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="method" id="method" value="<?=$fetch_payment_list['method']?>">
                       <input type="hidden" name="status" id="status" value="<?=$fetch_payment_list['payment_status']?>">
@@ -124,45 +131,13 @@ if (isset($_POST['edit_paym'])) {
                       <?php }
                       
                       }?>
-                      
-                    </form>
-                    
-                    <br>
-                    <?php if (!($fetch_payment_list['method'] === "เก็บเงินปลายทาง")) { ?>
-                      <!-- Button trigger modal -->
-                      <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editproductModal<?=$fetch_payment_list['method']?>">
-                      แก้ไข
-                    </button>
-
-                    <!-- Modal -->
-                    <div class="modal fade" id="editproductModal<?=$fetch_payment_list['method']?>" tabindex="-1" aria-labelledby="editproductModalLabel" aria-hidden="true">
-                      <div class="modal-dialog">
-                        <div class="modal-content">
-                          <div class="modal-header">
-                            <h1 class="modal-title fs-5" id="editproductModalLabel">แก้ไข <?=$fetch_payment_list['method']?></h1>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                          </div>
-                          <div class="modal-body">
-                            <form method="post" action="" enctype="multipart/form-data">
-                              <input type="hidden" name="old_method" id="old_method" value="<?=$fetch_payment_list['method']?>">
-                              <div class="form-group">
-                                <label class="text-start">ช่องทางการจ่ายเงิน</label>
-                                <input class="form-control" type="text" name="method" value="<?=$fetch_payment_list['method']?>" maxlength="90" required>
-                              </div>
-                              <div class="form-group">
-                                <label>รายละเอียดช่องทางการจ่ายเงิน (สูงสุด 190 ตัวอักษร)</label>
-                                <textarea class="form-control" name="description" rows="5" maxlength="190" required><?=$fetch_payment_list['description']?></textarea>
-                            </div>
-                            <br>
-                            </div>
-                            <div class="modal-footer">
-                              <button class="btn btn-primary" type="submit" name="edit_paym">แก้ไขช่องทางการเงิน</button>
-                            </div>
-                          </form>
-                          </div>
-                      </div>
-                    </div>
-                    <?php } ?>
+                </form>
+                </div>
+                <div class="mb-3">
+                  <?php
+                    require "modal/edit_payment_modal.php";
+                  ?>
+                </div>
                 </th>
             </tr><?php
               }

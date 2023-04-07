@@ -18,11 +18,12 @@ $result = mysqli_query($db, $user_info_query);
 $user = mysqli_fetch_assoc($result);
 $profile = array("name", "surname");
 ?>
-<title>รถเข็น</title>
 <?php 
-	include '../../inc/complete.php';
-  include '../../inc/errors.php'; 
+	include '../../inc/completes.php';
+	include '../../inc/errors.php';
 ?>
+<title>รถเข็น</title>
+
   <h2>รถเข็น</h2>
     <table id="cartTable" class="table table-striped" style="width:100%">
         <thead>
