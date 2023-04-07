@@ -15,7 +15,8 @@
       <form method="post" enctype="multipart/form-data" action="post/post_order.php">
                                 <input class="form-control" type="hidden" name="user_id" value="<?= $user['id']; ?>">
                                 <input class="form-control" type="hidden" name="order_id" value="<?= $order['id']; ?>">
-                        <?php if(mysqli_num_rows($order_payments) < 1){
+                        <?php $order_payments = mysqli_query($db,"SELECT * FROM `payments` WHERE `order_id` = ".$_GET['id']);
+                        if(mysqli_num_rows($order_payments) < 1){
                               $order_payments_method = mysqli_query($db,"SELECT * FROM `payment_method` WHERE `method` = '".$order['payment_method']."'");
                               $fetch_payments_method = mysqli_fetch_assoc($order_payments_method)
                         ?>

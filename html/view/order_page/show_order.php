@@ -25,10 +25,23 @@ else {
 	include '../../inc/errors.php';
 ?>
 <div class="row mb-2">
-    <div class="col-2">
+    <div class="col-7">
         <h2 class="mt-2">คำสั่งซื้อลำดับที่ <?= $order['id'] ?></h2>
+        <?php include "table/order_cart.php"; ?>
     </div>
-    <div class="col-8"></div>    
+    <div class="col-3 mt-5">
+                <div class="mt-5 card text-dark bg-light">
+                <h5 class="card-title mt-2 text-center">จำนวนเงินและการชำระเงิน</h5>
+                    <div class="row mb-2">
+                        <label class="col-sm-5">จำนวนเงินทั้งหมด</label>
+                        <label class="col-sm-7"><?= $order['amount'] ?></label>
+                    </div><hr>
+                    <div class="row mb-2">
+                        <label class="col-sm-5">ช่องทางการจ่ายเงิน</label>
+                        <label class="col-sm-7"><?= $order['payment_method'] ?></label>
+                    </div>
+                </div>
+    </div>
     <div class="col-2">
         <div class="card text-dark text-center bg-white border border-white">
             <h5 class="card-title mt-2">สถานะ :
@@ -41,61 +54,10 @@ else {
                 <?php } ?>
                  <?= $order_status[$order['status']] ?>
                 </p>
-                </h5>
+            </h5>
         </div>
-    </div>
-</div>  
-<div class="row mb-2">
-<div class="col-12">
-            <h5 class="card-title mt-2">สินค้าที่ซื้อ</h5>
-            <table id="cartTable" class="table table-striped" style="width:100%">
-                    <thead>
-                        <tr>
-                        <th width='5%'>
-                        ลำดับ
-                        </th>
-                        <th width='40%'>
-                        สินค้า
-                        </th>
-                        <th width='10%'>
-                        จำนวน
-                        </th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                        <?php
-                        // Display the cart
-                        if(mysqli_num_rows($order_cart) > 0){
-                            while($fetch_order_cart = mysqli_fetch_assoc($order_cart)){
-                                $products = "SELECT * FROM `products` WHERE `product_id` = '".$fetch_order_cart['product_id']."'";
-                                $product = mysqli_fetch_array(mysqli_query($db, $products));
-                                echo '<tr>';
-                                echo '<th>' . $i . '</th>';
-                                echo '<th>' . $product['product_name'] . '</th>';
-                                echo '<th>' . $fetch_order_cart['quantity'] . '</th>';
-                                echo '</tr>';
-                                $i++;
-                            }
-                        }
-                        ?>
-                    </tbody>
-                </table>
-        </div>
-        <div class="col-6">
-            <div class="card text-dark bg-light">
-            <h5 class="card-title mt-2 text-center">จำนวนเงินและการชำระเงิน</h5>
-                <div class="row mb-2">
-                    <label class="col-sm-8">จำนวนเงิน<br>(หลังหักส่วนลดแล้ว)</label>
-                    <label class="col-sm-4"><?= $order['amount'] ?></label>
-                </div><hr>
-                <div class="row mb-2">
-                    <label class="col-sm-6">ช่องทาง<br>การจ่ายเงิน</label>
-                    <label class="col-sm-6"><?= $order['payment_method'] ?></label>
-                </div>
-            </div>
-        </div>
-    <div class="mt-3 col-6">
-        <div class="card text-dark bg-light">
+        <?php if($order['status'] != 6) {?>
+        <div class="mt-3 card text-dark bg-light">
             <form method="post" enctype="multipart/form-data" action="post/post_order.php">
                 <input class="form-control" type="hidden" name="order_id" value="<?= $order['id']; ?>">
                 <input class="form-control" type="hidden" name="order_user" value="<?= $order['user_id']; ?>">
@@ -142,6 +104,7 @@ else {
                 <?php } ?>
             </form>
         </div>
+        <?php } ?>
     </div>
 </div>
 
@@ -199,7 +162,6 @@ else {
                         </div>
                     <?php }
                     else { 
-                        $order_payments = mysqli_query($db,"SELECT * FROM `payment` WHERE `order_id` = ".$_GET['id']."");
                         include 'modal/add_payment_modal.php';
                         ?>
                         
