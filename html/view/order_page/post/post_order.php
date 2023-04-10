@@ -10,9 +10,8 @@ if (isset($_POST['add_payment'])) {
     $payment_img_tmp_name = $_FILES['payment_img']['tmp_name'];
     $payment_img_rename = 'payment_order_'.$order_id.'_user_'.$user_id.'_'.$_FILES['payment_img']['name'];
   
-    $payment_img_folder = '../../images/payments_image/'.$payment_img;
-    $payment_img_folder_rename = '../../images/payments_image/'.$payment_img_rename;
-  
+    $payment_img_folder = '../../../images/payments_image/'.$payment_img;
+    $payment_img_folder_rename = '../../../images/payments_image/'.$payment_img_rename;
     copy($payment_img_tmp_name, $payment_img_folder);
     if (rename($payment_img_folder,$payment_img_folder_rename)) {
   
@@ -27,7 +26,7 @@ if (isset($_POST['add_payment'])) {
     $order_id = $_POST['order_id'];
     $user_id = $_POST['user_id'];
     $payment_img_delete = $_POST['payment_img'];
-    $payment_img_folder_delete = '../../images/payments_image/'.$payment_img_delete;
+    $payment_img_folder_delete = '../../../images/payments_image/'.$payment_img_delete;
   
     if (unlink($payment_img_folder_delete)) {
       // Finally, delete payment order
@@ -56,8 +55,8 @@ if (isset($_POST['add_payment'])) {
     $shipment_img_tmp_name = $_FILES['shipment_img']['tmp_name'];
     $shipment_img_rename = 'shipment_order_'.$order_id.'_user_'.$user_id.'_'.$_FILES['shipment_img']['name'];
   
-    $shipment_img_folder = '../../images/shipments_image/'.$shipment_img;
-    $shipment_img_folder_rename = '../../images/shipments_image/'.$shipment_img_rename;
+    $shipment_img_folder = '../../../images/shipments_image/'.$shipment_img;
+    $shipment_img_folder_rename = '../../../images/shipments_image/'.$shipment_img_rename;
   
     copy($shipment_img_tmp_name, $shipment_img_folder);
     if (rename($shipment_img_folder,$shipment_img_folder_rename)) {
@@ -73,7 +72,7 @@ if (isset($_POST['add_payment'])) {
     $order_id = $_POST['order_id'];
     $user_id = $_POST['user_id'];
     $shipment_img_delete =  $_POST['shipment_img'];
-    $shipment_img_folder_delete = '../../images/shipments_image/'.$shipment_img_delete;
+    $shipment_img_folder_delete = '../../../images/shipments_image/'.$shipment_img_delete;
   
     if (unlink($shipment_img_folder_delete)) {
       // Finally, delete shipment order

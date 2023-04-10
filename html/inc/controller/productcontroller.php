@@ -93,19 +93,18 @@
         array_push($completes, "เปลี่ยนสถานะสำเร็จ");
       }
     }
-    if (isset($_POST['edit_prod_cate'])) {
-      // receive all input values from the form
+    if (isset($_POST['add_prod_cate'])) {
       $product_id = $_POST['product_id'];
-      $old_product_category = $_POST['old_product_category'];
       $product_category = $_POST['product_category'];
-      if ($old_product_category === $product_category) {
-        array_push($errors, "ไม่สามารถเปลี่ยนประเภทเดิมได้");
-      }
-      if (count($errors) == 0) {
-        // Finally, product product status
-        $query = "UPDATE `products` SET `product_category`='".$product_category."' WHERE `product_id` = ".$product_id;
+        $query = "INSERT INTO `product_categories`(`product_id`, `category`) VALUES (".$product_id.",'".$product_category."')";
         mysqli_query($db, $query);
-        array_push($completes, "เปลี่ยนสถานะสำเร็จ");
-      }
+        array_push($completes, "เพิ่มประเภทสินค้าในผลิตภัณฑ์สำเร็จ");
+    }
+    if (isset($_POST['del_prod_cate'])) {
+      $product_id = $_POST['product_id'];
+      $product_category = $_POST['product_category'];
+        $query = "DELETE FROM `product_categories` WHERE `product_id` = ".$product_id." AND `category` = '".$product_category."'";
+        mysqli_query($db, $query);
+        array_push($completes, "ลบประเภทสินค้าในผลิตภัณฑ์สำเร็จ");
     }
 ?>

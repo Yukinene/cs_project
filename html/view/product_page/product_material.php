@@ -1,9 +1,7 @@
 <?php
 require '../../inc/header.php';
-
 checkadmin();
 require '../../inc/controller/productmaterialcontroller.php';
-
 include '../../inc/completes.php';
 include '../../inc/errors.php';
 ?>
@@ -11,7 +9,8 @@ include '../../inc/errors.php';
 <title>ระบบจัดการวัตถุดิบสินค้า (สำหรับผู้จัดการระบบ)</title>
 <h2>จัดการวัตถุดิบ - <?=$fetch_products['product_name']?></h2>
 
-    <div class="mb-2 d-flex flex-row-reverse"> 
+    <div class="mb-2 d-flex flex-row-reverse gap-3">
+    <a class="btn btn-danger" href="show_product.php?id=<?=$fetch_products['product_id']?>">ย้อนกลับ</a>
       <?php include 'modal/add_product_material_modal.php'; ?>
     </div>
     
@@ -54,7 +53,7 @@ include '../../inc/errors.php';
                 </div>
 
                 <?php
-                  require "modal/product_material_modal.php";
+                  require "modal/edit_product_material_modal.php";
                 ?>
                 </th>
             </tr>

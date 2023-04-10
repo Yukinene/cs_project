@@ -9,6 +9,10 @@ if (mysqli_num_rows($log_products) > 0) {
 $amount = 0;
 
 ?>
+
+<div class="mb-2 d-flex flex-row-reverse gap-3">
+    <a class="btn btn-danger" href="../product_page/show_product.php?id=<?=$product['product_id']?>">ย้อนกลับ</a>
+</div>
 <table id="logTable" class="table table-striped" style="width:100%">
         <thead>
                 <tr>

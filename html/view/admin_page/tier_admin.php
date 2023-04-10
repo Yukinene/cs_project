@@ -8,7 +8,7 @@
 ?>
 <title>ระบบจัดการระดับ (สำหรับผู้จัดการระบบ)</title>
 
-<div class="mb-2 d-flex flex-row-reverse"> 
+<div class="mb-2 d-flex flex-row-reverse gap-3"> 
       <?php include 'modal/freight_modal.php'; ?>
       <?php include 'modal/add_tier_modal.php'; ?>
 </div>

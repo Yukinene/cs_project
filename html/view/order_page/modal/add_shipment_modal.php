@@ -1,5 +1,9 @@
 <!-- Button trigger modal -->
-<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addshipmentModal">
+<button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#addshipmentModal"
+<?php if ($order['status'] < 3) {
+  echo "disabled";
+} ?>
+>
 หลักฐานการแพ็คสินค้า
 </button>
 

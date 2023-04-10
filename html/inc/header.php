@@ -32,7 +32,7 @@
             <ul class="dropdown-menu" aria-labelledby="navbarDarkDropdownMenuLink">
             <li class="nav-item"><a name="product_list" href="../../view/product_page/product_list.php" class="nav-link">สินค้าทั้งหมด</a></li>
               <?php 
-              $category_list_query = "SELECT * FROM `category`";
+              $category_list_query = "SELECT * FROM `categories`";
               $select_category_list = mysqli_query($db,$category_list_query);
               if(mysqli_num_rows($select_category_list) > 0){
                 while($fetch_category_list = mysqli_fetch_assoc($select_category_list)){

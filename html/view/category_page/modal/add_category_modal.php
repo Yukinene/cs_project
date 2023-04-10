@@ -19,7 +19,7 @@
 	    </div>
       </div>
       <div class="modal-footer">
-        <button class="btn btn-primary" type="submit" name="add_cate">เพิ่มระดับ</button>
+        <button class="btn btn-primary" type="submit" name="add_cate">เพิ่มประเภท</button>
       </div>
     </form>
     </div>

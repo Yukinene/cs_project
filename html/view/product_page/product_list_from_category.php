@@ -5,7 +5,7 @@
 	include '../../inc/errors.php';
 
     if (isset($_GET['category'])) {
-        $select_category = mysqli_query($db,"SELECT * FROM `category` WHERE `category` = '".$_GET['category']."'");
+        $select_category = mysqli_query($db,"SELECT * FROM `categories` WHERE `category` = '".$_GET['category']."'");
         if(mysqli_num_rows($select_category) > 0) {
             $category = mysqli_fetch_assoc($select_category);
         }
@@ -23,9 +23,16 @@
    <h1 class="heading">สินค้าประเภท<?= $category['category'] ?></h1>
    <div class="row">      
     <?php
-      $select_products = mysqli_query($db, "SELECT * FROM `products` WHERE `product_category` = '".$category['category']."' AND `product_status` = 'active'");
-      if(mysqli_num_rows($select_products) > 0){
-         while($fetch_product = mysqli_fetch_assoc($select_products)){
+    
+      $select_product_categories = mysqli_query($db, "SELECT * FROM `product_categories` WHERE `category` = '".$category['category']."'");
+      // 
+      if(mysqli_num_rows($select_product_categories) > 0){
+         while($fetch_product_categories = mysqli_fetch_assoc($select_product_categories)){
+            $fetch_product = mysqli_fetch_assoc(
+                mysqli_query($db, 
+                "SELECT * FROM `products` WHERE `product_id` = '".$fetch_product_categories['product_id']."'AND `product_status` = 'active'"
+                )
+            );
             require "card/product_card.php";
          };
       }

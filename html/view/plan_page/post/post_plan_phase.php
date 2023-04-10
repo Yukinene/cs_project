@@ -73,7 +73,7 @@ if (isset($_POST['plan_id'])) {
             UPDATE `materials` SET
             `material_amount`= ".$fetch_materials['material_amount']+$fetch_plan_material['material_amount_f']."
             WHERE `material_id`=".$fetch_plan_material['material_id']);
-            $amount += ($fetch_plan_material['material_amount_f']*$fetch_materials['bought_price']);
+            $amount += (($fetch_plan_material['material_amount_f']/$fetch_materials['bought_amount'])*$fetch_materials['bought_price']);
             }
         }
         $status = "กำลังทำสินค้า";
