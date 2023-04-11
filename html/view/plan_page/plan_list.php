@@ -2,7 +2,7 @@
   require "post/add_plan.php";
   $select_plans = mysqli_query($db, "SELECT * FROM `plans`");
 ?>
-
+<div class="table-responsive">
 <table id="PlanTable" class="table table-striped" style="width:100%">
         <thead>
 			<center>
@@ -47,7 +47,7 @@
         ?>
         </tbody>
 </table>
-
+</div>
 <script>
         $(document).ready(function () {
             $("#PlanTable").DataTable({

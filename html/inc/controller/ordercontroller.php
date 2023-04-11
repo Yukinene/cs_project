@@ -13,12 +13,38 @@ if (isset($_POST['add_order'])) {
     $sub_district = mysqli_real_escape_string($db, $_POST['sub_district']);
     $country = mysqli_real_escape_string($db, $_POST['country']);
     $postal_code = mysqli_real_escape_string($db, $_POST['postal_code']);
-    
-    if (empty($name) || empty($surname)) {
-      array_push($errors, "กรุณาใส่ชื่อ นามสกุล");
+    if ($_POST['coupon'] != NULL) {
+      $coupon = $_POST['coupon'];
+      $date = date("Y-m-d");  
+      $check_coupon_expire = "SELECT * FROM `coupons` WHERE `coupon_name` = '".$coupon."' AND date(`expire_date`) > date('".$date."')";
+      if (mysqli_num_rows(mysqli_query($db,$check_coupon_expire)) > 0) {
+        if (mysqli_num_rows(mysqli_query($db,"SELECT * FROM `coupon_usage` WHERE `coupon_name` = '".$coupon."' AND `user_id` =".$user_id)) > 0) {
+          array_push($errors, "คุณได้ใช้คูปองส่วนลดนี้แล้ว");
+        }
+        else {
+          $coupon_ticket = mysqli_fetch_assoc(mysqli_query($db,"SELECT * FROM `coupons` WHERE `coupon_name` = '".$coupon."'"));
+          if (($amount - $coupon_ticket['coupon_price']) > 0) {
+            $amount -= $coupon_ticket['coupon_price'];
+          }
+          else {
+            array_push($errors,"ไม่สามารถใช้งานได้เนื่องจากคูปองมีมูลค่าสูงกว่ามูลค่าสินค้าทั้งหมด");
+          }
+        }
+      }
+      else {
+        $check_coupon = "SELECT * FROM `coupons` WHERE `coupon_name` = '".$coupon."'";
+        if (mysqli_num_rows(mysqli_query($db,$check_coupon)) > 0) {
+          array_push($errors, "คูปองนี้หมดอายุแล้ว");
+        }
+        else {
+          array_push($errors, "คูปองนี้ไม่มีในระบบ");
+        }
+      }
     }
-    else 
-    {if (count($cart) > 0) {
+    if (count($cart) < 1) {
+      array_push($errors, "กรุณาเลือกสินค้า");
+    }
+    if (count($errors) < 1) {
         // Finally, register order
         $query = "INSERT `orders`(`user_id`, `amount`, `payment_method`,
         `name`, `surname`, `building_no`, `line`, `province`, `district`, `sub_district`,
@@ -27,6 +53,9 @@ if (isset($_POST['add_order'])) {
         '$name', '$surname', '$building_no', '$line', '$province', '$district', '$sub_district',
           '$country','$postal_code')";
         mysqli_query($db, $query);
+        if ($_POST['coupon'] != NULL) {
+          mysqli_query($db,"INSERT INTO `coupon_usage`(`coupon_name`, `user_id`) VALUES ('".$coupon."',".$user_id.")");
+        }
         $order_id = mysqli_fetch_assoc(mysqli_query($db,"SELECT max(`id`) FROM `orders` WHERE 1"));
         foreach($cart as $item => $quantity) {
               mysqli_query($db, "INSERT INTO `order_products`(`order_id`, `product_id`, `quantity`) 
@@ -55,13 +84,6 @@ if (isset($_POST['add_order'])) {
         unset($cart);
         $_SESSION['cart'] = NULL;
       }
-      else {
-      array_push($errors, "กรุณาเลือกสินค้า");
-      }
-      
-    }
-
-    
 }
 
 ?>

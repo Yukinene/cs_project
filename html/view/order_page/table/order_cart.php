@@ -1,4 +1,5 @@
 <h5 class="card-title mt-2">สินค้าที่ซื้อ</h5>
+<div class="table-responsive">
     <table id="cartTable" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -31,3 +32,4 @@
             ?>
         </tbody>
     </table>
+</div>

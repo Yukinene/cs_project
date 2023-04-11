@@ -2,6 +2,7 @@
     $user_order_list_query = "SELECT * FROM `user_order` WHERE `user` = '".$user['id']."'";
     $user_order_list = mysqli_query($db,$user_order_list_query);
 ?>
+<div class="table-responsive">
     <table id="userorderTable" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -31,3 +32,4 @@
         ?>
         </tbody>
     </table>
+</div>

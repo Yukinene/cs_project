@@ -1,6 +1,7 @@
 <?php
     $select_product_categories = mysqli_query($db,"SELECT * FROM `product_categories` WHERE product_id = ".$_GET['id']);
     if (mysqli_num_rows($select_product_categories) > 0) { ?>
+    <div class="table-responsive">
     <table id="ProductCategoriesTable" class="table table-striped" style="width:100%">
     <thead>
         <tr>
@@ -29,5 +30,6 @@
             <?php } ?>
     </tbody>
 </table>
+</div>
     <?php }
 ?>

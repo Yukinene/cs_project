@@ -6,7 +6,8 @@
 if(mysqli_num_rows($select_plan_materials) > 0){
 ?>
 <h3>วัตถุดิบในแผน :</h3>
-<table id="PlanmaterialTable" class="table table-striped" style="width:100%">
+<div class="table-responsive">
+    <table id="PlanmaterialTable" class="table table-striped" style="width:100%">
         <thead>
 			<center>
             <tr>
@@ -47,6 +48,7 @@ if(mysqli_num_rows($select_plan_materials) > 0){
         ?>
         </tbody>
     </table>
+</div>
 <?php
  }
 ?>

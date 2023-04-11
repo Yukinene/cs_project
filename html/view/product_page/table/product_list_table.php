@@ -1,3 +1,4 @@
+<div class="table-responsive">
 <table id="ProductTable" class="table table-striped" style="width:100%">
         <thead>
 			<center>

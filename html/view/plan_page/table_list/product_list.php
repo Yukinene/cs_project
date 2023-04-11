@@ -5,8 +5,9 @@
 if(mysqli_num_rows($select_plan_products) > 0){
 ?>
 <h3>สินค้าในแผน :</h3>
-<table id="PlanproductTable" class="table table-striped" style="width:100%">
-        <thead>
+<div class="table-responsive">
+  <table id="PlanproductTable" class="table table-striped" style="width:100%">
+    <thead>
 			<center>
             <tr>
             <th width='20%'>
@@ -35,8 +36,8 @@ if(mysqli_num_rows($select_plan_products) > 0){
             } ?>
           </tr>
 			</center>
-        </thead>
-        <tbody>
+    </thead>
+    <tbody>
         <?php
          		while($fetch_plan_products = mysqli_fetch_assoc($select_plan_products)){
                     $fetch_products = mysqli_fetch_assoc(mysqli_query($db,"SELECT * FROM `products` WHERE `product_id` = ".$fetch_plan_products['product_id'].""))
@@ -72,8 +73,9 @@ if(mysqli_num_rows($select_plan_products) > 0){
             <?php
                 }
         ?>
-        </tbody>
-    </table>
+    </tbody>
+  </table>
+</div>
 ปล. สินค้าจะทำเพิ่ม 1% เสมอ
 <?php
  }

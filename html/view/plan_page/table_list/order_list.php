@@ -5,8 +5,9 @@
 if(mysqli_num_rows($select_plan_orders) > 0){
 ?>
 <h3>คำสั่งซื้อในแผน :</h3>
-<table id="PlanorderTable" class="table table-striped" style="width:100%">
-    <thead>
+<div class="table-responsive">
+    <table id="PlanorderTable" class="table table-striped" style="width:100%">
+        <thead>
 			<center>
             <tr>
             <th width='20%'>
@@ -50,8 +51,9 @@ if(mysqli_num_rows($select_plan_orders) > 0){
             <?php
                 }
         ?>
-    </tbody>
-</table>
+        </tbody>
+    </table>
+</div>
 <?php
 }
 ?>

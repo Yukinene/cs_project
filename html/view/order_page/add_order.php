@@ -1,7 +1,4 @@
 <form method="post" enctype="multipart/form-data" action="">
-					<?php 
-					include '../../inc/errors.php'; 
-					?>
 					<input class="form-control" type="hidden" name="user_id" value="<?= $user['id']; ?>">
                     <input class="form-control" type="hidden" name="amount" value="<?= $totalamount; ?>">
 					<div class="row mb-2"> 
@@ -82,6 +79,12 @@
 						<label class="col-sm-2 col-sm-2 col-form-label">รหัสไปรษณีย์</label>
 						<div class="col-sm-10">
 						<input class="form-control" type="text" id="postal_code" name="postal_code" readonly>
+						</div>
+					</div>
+					<div class="row mb-2">
+						<label class="col-sm-2 col-sm-2 col-form-label">คูปองส่วนลด</label>
+						<div class="col-sm-10">
+						<input class="form-control" type="text" name="coupon">
 						</div>
 					</div>
 					<button class="btn btn-primary mb-2" type="submit" name="add_order">ทำรายการให้เสร็จสิ้น</button>

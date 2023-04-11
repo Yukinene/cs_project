@@ -13,6 +13,7 @@
     
 ?>
     <h2>รายการคำสั่งซื้อ</h2>
+  <div class="table-responsive">
     <table id="orderTable" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -54,7 +55,7 @@
         ?>
         </tbody>
     </table>
-
+  </div>
 
 
 <script>
