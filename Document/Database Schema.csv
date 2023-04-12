@@ -1,0 +1,92 @@
+"dbms","TABLE_SCHEMA","TABLE_NAME","COLUMN_NAME","ORDINAL_POSITION","DATA_TYPE","CHARACTER_MAXIMUM_LENGTH","CONSTRAINT_TYPE","REFERENCED_TABLE_SCHEMA","REFERENCED_TABLE_NAME","REFERENCED_COLUMN_NAME"
+"mysql","cs_project_db","account","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","categories","category","1","varchar","255","PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","coupons","coupon_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","coupons","coupon_name","2","varchar","255","UNIQUE",NULL,NULL,NULL
+"mysql","cs_project_db","coupon_usage","coupon_name","1","varchar","255","UNIQUE",NULL,NULL,NULL
+"mysql","cs_project_db","coupon_usage","user_id","2","int",NULL,"FOREIGN KEY","cs_project_db","users","id"
+"mysql","cs_project_db","coupon_usage","coupon_name","1","varchar","255","FOREIGN KEY","cs_project_db","coupons","coupon_name"
+"mysql","cs_project_db","log_materials","material_id","1","int",NULL,"FOREIGN KEY","cs_project_db","materials","material_id"
+"mysql","cs_project_db","log_products","product_id","1","int",NULL,"FOREIGN KEY","cs_project_db","products","product_id"
+"mysql","cs_project_db","materials","material_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","orders","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","orders","payment_method","4","varchar","100","FOREIGN KEY","cs_project_db","payment_method","method"
+"mysql","cs_project_db","orders","user_id","2","int",NULL,"FOREIGN KEY","cs_project_db","users","id"
+"mysql","cs_project_db","order_products","product_id","2","int",NULL,"FOREIGN KEY","cs_project_db","products","product_id"
+"mysql","cs_project_db","order_products","order_id","1","int",NULL,"FOREIGN KEY","cs_project_db","orders","id"
+"mysql","cs_project_db","payments","order_id","1","int",NULL,"FOREIGN KEY","cs_project_db","orders","id"
+"mysql","cs_project_db","payment_method","method","1","varchar","100","PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","plans","plan_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","plan_materials","material_id","2","int",NULL,"FOREIGN KEY","cs_project_db","materials","material_id"
+"mysql","cs_project_db","plan_materials","plan_id","1","int",NULL,"FOREIGN KEY","cs_project_db","plans","plan_id"
+"mysql","cs_project_db","plan_orders","plan_id","1","int",NULL,"FOREIGN KEY","cs_project_db","plans","plan_id"
+"mysql","cs_project_db","plan_orders","order_id","2","int",NULL,"FOREIGN KEY","cs_project_db","orders","id"
+"mysql","cs_project_db","plan_products","product_id","2","int",NULL,"FOREIGN KEY","cs_project_db","products","product_id"
+"mysql","cs_project_db","plan_products","plan_id","1","int",NULL,"FOREIGN KEY","cs_project_db","plans","plan_id"
+"mysql","cs_project_db","products","product_id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","product_categories","product_id","1","int",NULL,"FOREIGN KEY","cs_project_db","products","product_id"
+"mysql","cs_project_db","product_categories","category","2","varchar","255","FOREIGN KEY","cs_project_db","categories","category"
+"mysql","cs_project_db","product_materials","product_id","1","int",NULL,"FOREIGN KEY","cs_project_db","products","product_id"
+"mysql","cs_project_db","product_materials","material_id","2","int",NULL,"FOREIGN KEY","cs_project_db","materials","material_id"
+"mysql","cs_project_db","shipment","order_id","1","int",NULL,"FOREIGN KEY","cs_project_db","orders","id"
+"mysql","cs_project_db","users","id","1","int",NULL,"PRIMARY KEY",NULL,NULL,NULL
+"mysql","cs_project_db","user_order","user","1","int",NULL,"FOREIGN KEY","cs_project_db","users","id"
+"mysql","cs_project_db","account","time_log","2","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","account","amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","account","info","4","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","coupons","coupon_price","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","coupons","expire_date","4","datetime",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","coupon_usage","usage_date","3","datetime",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","discount","tier","1","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","discount","order_price","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","discount","discount_percentage","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","freight","price","1","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","freight","ordermore","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","log_materials","time_log","2","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","log_materials","material_amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","log_products","time_log","2","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","log_products","product_amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","materials","material_name","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","materials","bought_amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","materials","material_amount","4","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","materials","bought_price","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","name","5","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","surname","6","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","building_no","7","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","line","8","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","province","9","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","district","10","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","sub_district","11","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","country","12","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","postal_code","13","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","created_date","14","timestamp",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","orders","status","15","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","order_products","quantity","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","payments","payment_img","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","payment_method","description","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","payment_method","payment_status","3","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","plans","status","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","plan_materials","material_amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","plan_materials","material_amount_f","4","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","plan_products","order_amount","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","plan_products","plan_amount","4","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","plan_products","total_amount","5","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","products","product_name","2","varchar","200",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","products","product_description","3","varchar","200",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","products","product_img","4","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","products","product_price","5","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","products","product_status","6","varchar","200",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","products","product_amount","7","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","product_materials","material_amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","shipment","shipment_img","2","varchar","255",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","role","2","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","total_amount","3","double",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","username","4","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","name","5","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","surname","6","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","email","7","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","users","password","8","varchar","100",NULL,NULL,NULL,NULL
+"mysql","cs_project_db","user_order","month","2","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","user_order","year","3","int",NULL,NULL,NULL,NULL,NULL
+"mysql","cs_project_db","user_order","amount","4","double",NULL,NULL,NULL,NULL,NULL
