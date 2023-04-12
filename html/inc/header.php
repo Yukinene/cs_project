@@ -117,7 +117,5 @@
       </ul>
     </header>
   </div>
-<main class="bg-transparent">
+<main class="bg-secondary bg-gradient" style="--bs-bg-opacity: .5;">
 <div class="my-5 p-5 pb-md-4">
-  <!-- <br><br> -->
-<!-- my-4 p-5 pb-md-4 -->

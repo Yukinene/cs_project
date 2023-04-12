@@ -2,7 +2,7 @@
     $coupon_usage_list = "SELECT * FROM `coupon_usage`";
     $coupon_usage_list_query = mysqli_query($db,$coupon_usage_list);
 ?>
-<h4 class ="mt-2">ประวัติการใช้คูปอง</h4>
+<h3 class ="mt-2">ประวัติการใช้คูปอง</h3>
 <div class="table-responsive">
     <table id="couponusageTable" class="table table-striped" style="width:100%">
         <thead>

@@ -12,7 +12,9 @@
     $select_order_list = mysqli_query($db,$order_list_query);
     
 ?>
-    <h2>รายการคำสั่งซื้อ</h2>
+<div class="card">
+  <div class="card-body ms-2">
+  <h2 class="card-title">รายการคำสั่งซื้อ</h2>
   <div class="table-responsive">
     <table id="orderTable" class="table table-striped" style="width:100%">
         <thead>
@@ -55,6 +57,8 @@
         ?>
         </tbody>
     </table>
+</div>
+  
   </div>
 
 

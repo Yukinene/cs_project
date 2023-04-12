@@ -24,9 +24,12 @@ else {
 	include '../../inc/completes.php';
 	include '../../inc/errors.php';
 ?>
+<div class="card">
+    <div class="card-body ms-2">
+        
 <div class="row mb-2">
     <div class="col-7">
-        <h2 class="mt-2">คำสั่งซื้อลำดับที่ <?= $order['id'] ?></h2>
+        <h2 class="card-title mt-2">คำสั่งซื้อลำดับที่ <?= $order['id'] ?></h2>
         <?php include "table/order_cart.php"; ?>
     </div>
     <div class="col-3 mt-5">
@@ -189,6 +192,8 @@ else {
     </div>
 <?php } ?>
 
+    </div>
+</div>
 <?php
 require '../../inc/footer.php';
 ?>

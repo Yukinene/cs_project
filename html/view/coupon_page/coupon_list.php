@@ -1,7 +1,7 @@
 <?php
     $coupon_list_query = mysqli_query($db,"SELECT * FROM `coupons`");
 ?>
-<h4 class ="mt-2">คูปองในระบบ</h4>
+<h3 class ="mt-2">คูปองในระบบ</h3>
 <div class="table-responsive">
     <table id="couponTable" class="table table-striped" style="width:100%">
         <thead>

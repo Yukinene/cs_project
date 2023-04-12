@@ -12,8 +12,10 @@ else {
     header('location: ../../index.php');
 }
 ?>
+<div class="card">
+    <div class="card-body ms-2">
 
-<div class="row mt-2 mb-2">
+    <div class="row mt-2 mb-2">
     <div class="col-4"><h3>สินค้า : <?=$product_info['product_name']?></h3></div>
 </div>
 <div class="mb-2 d-flex flex-row-reverse gap-3">
@@ -93,6 +95,8 @@ else {
                 ?>
             </div>
         </div>
+    </div>
+</div>
     </div>
 </div>
 <?php

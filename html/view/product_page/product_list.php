@@ -6,8 +6,10 @@
 	include '../../inc/errors.php';
 ?>
 
-<div class="container">
-<section class="products">
+<div class="card">
+   <div class="card-body ms-2">
+
+   <section class="products">
    <h1 class="heading">ผลิตภัณฑ์ใหม่ล่าสุด</h1>
    <div class="row">      
     <?php
@@ -24,7 +26,7 @@
   </div>
 </div>
 </section>
-
+   </div>
 </div>
 <?php
 require_once("../../inc/footer.php");

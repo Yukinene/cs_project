@@ -13,10 +13,11 @@ else {
 	include '../../inc/errors.php';
 ?>
 <title>แผนการผลิตที่ <?= $plans['plan_id'] ?></title>
-
-<div class="row mb-2">
+<div class="card">
+    <div class="card-body ms-2">
+    <div class="row mb-2">
     <div class="col-10">
-        <h2>แผนการผลิตที่ <?= $plans['plan_id'] ?></h2>
+        <h2 class="card-title">แผนการผลิตที่ <?= $plans['plan_id'] ?></h2>
     </div>
     <div class="col-2">
         <div class="mb-2 d-flex flex-row-reverse gap-3">
@@ -42,6 +43,8 @@ else {
     </div>
     <div class="col-12">
         <?php require 'table_list/material_list.php'; ?>
+    </div>
+</div>
     </div>
 </div>
 <?php

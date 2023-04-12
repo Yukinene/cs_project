@@ -10,20 +10,17 @@ $result = mysqli_query($db, $user_info_query);
 $user = mysqli_fetch_assoc($result);
 $edit_profile = array("name", "surname", "email", "password_new", "password_old");
 ?>
-<title>Profile</title>
-<div class="container">
-  	<div class="row">
-  		<div class="col-2">
-		</div>
-			<div class="col-6">
-					<div class="row placeholders">
-					<div class="panel  panel-default">
-					<div class="panel-body justify-content-center">
-				<div class="header mb-2">
+<title>แก้ไขข้อมูลผู้ใช้</title>
+<div class="row">
+  	<div class="col-3"></div>
+	<div class="col-6">
+			<div class="card justify-content-center">
+				<div class="card-body">
+				<div class="header mt-2 mb-2">
 					<h2>แก้ไขข้อมูลผู้ใช้</h2>
 				</div>
                 <div class="mb-2 d-flex flex-row-reverse gap-3">
-                <a class="btn btn-danger" href="profile.php">ย้อนกลับ</a>
+                	<a class="btn btn-danger" href="profile.php">ย้อนกลับ</a>
                 </div>
 				<form method="post" action="">
 					<div class="row mb-2">  
@@ -32,7 +29,7 @@ $edit_profile = array("name", "surname", "email", "password_new", "password_old"
 						<input class="form-control-plaintext" type="text" name="username" value="<?= $user['username']; ?>" readonly>
 						</div>
 					</div>
-						<div class="row mb-2">
+					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">ขื่อ</label>
 						<div class="col-sm-10">
 						<input class="form-control" type="text" name="name" value="<?= $user['name']; ?>" required>
@@ -62,15 +59,14 @@ $edit_profile = array("name", "surname", "email", "password_new", "password_old"
 						<input class="form-control" type="password" name="password_old">
 						</div>
 					</div>
-					<br>
+				</div>
+				<div class="card-footer">
 					<button class="btn btn-primary mb-2" type="submit" name="cha_info">แก้ไขข้อมูล</button>
+				</div>
 				</form>
-			</div>
-			</div>
-			</div>
-  		</div>
-  	</div>
-  </div>
+		</div>
+	</div>
+</div>
 <?php
 require '../../inc/footer.php';
 ?>

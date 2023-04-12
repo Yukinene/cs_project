@@ -3,6 +3,9 @@ require '../../inc/header.php';
 $log_products = mysqli_query($db, "SELECT * FROM `log_products` WHERE `product_id` = ".$_GET['id']);
 $product = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `products` WHERE `product_id` = ".$_GET['id']));
 ?>
+<div class="card">
+        <div class="card-body ms-2">
+                
 ้<h2>ประวัติการเข้าออกสินค้า : <?=$product['product_name']?></h2>
 <?php
 if (mysqli_num_rows($log_products) > 0) {
@@ -50,6 +53,8 @@ $amount = 0;
                 </tr>
         </tbody>
 </table>       
+</div>
+        </div>
 </div>
 
 <script>

@@ -1,7 +1,7 @@
 </div>
 </main>
 </body>
-<footer class="bg-light text-muted mt-auto">
+<footer class="md-2 bg-light text-muted mt-auto">
   <div class="container py-3">
     <div class="row g-0">
       <div class="col-sm-6 col-md-8">

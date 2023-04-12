@@ -20,6 +20,5 @@
                 <label class="col-sm-2 col-form-label">อีเมล</label>
                 <label class="col-sm-10 col-form-label" name="email"><?=$user['email']?></label>
             </div>
-        </div>
     </div>
 </div>

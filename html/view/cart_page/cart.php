@@ -23,8 +23,9 @@ $profile = array("name", "surname");
 	include '../../inc/errors.php';
 ?>
 <title>รถเข็น</title>
-
-  <h2>รถเข็น</h2>
+<div class="card">
+  <div class="card-body">
+  <h2 class="card-title">รถเข็น</h2>
     <table id="cartTable" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -143,6 +144,8 @@ $profile = array("name", "surname");
             </div>
           </div>
         </div>
+  </div>
+</div>
 <?php
   // $cart_test = var_dump($cart);
   // echo ($cart_test);

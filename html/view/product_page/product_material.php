@@ -7,8 +7,9 @@ include '../../inc/errors.php';
 ?>
 
 <title>ระบบจัดการวัตถุดิบสินค้า (สำหรับผู้จัดการระบบ)</title>
-<h2>จัดการวัตถุดิบ - <?=$fetch_products['product_name']?></h2>
-
+<div class="card">
+  <div class="card-body ms-2">
+  <h2 class="card-title">จัดการวัตถุดิบ - <?=$fetch_products['product_name']?></h2>
     <div class="mb-2 d-flex flex-row-reverse gap-3">
     <a class="btn btn-danger" href="show_product.php?id=<?=$fetch_products['product_id']?>">ย้อนกลับ</a>
       <?php include 'modal/add_product_material_modal.php'; ?>
@@ -66,6 +67,8 @@ include '../../inc/errors.php';
     </table>
   </div>
 
+  </div>
+</div>
 <script>
         $(document).ready(function () {
             $("#ProductmaterialTable").DataTable({

@@ -17,10 +17,8 @@ $edit_profile = array("name", "surname", "email", "password_new", "password_old"
 			<div class="col-8">
 				<?php include 'show_user.php'; ?>
 			</div>
-  		</div>
-  		</div>
-  	</div>
-	<div class="row mt-2">
+	</div>
+  	<div class="row mt-2">
 		<div class="col-2"></div>
   		<div class="col-4">
 		  	<div class="card">

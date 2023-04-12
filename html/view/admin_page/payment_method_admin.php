@@ -66,17 +66,17 @@ if (isset($_POST['edit_paym'])) {
   include '../../inc/errors.php';
 ?>
 <title>ระบบจัดการช่องทางการเงิน (สำหรับผู้จัดการระบบ)</title>
-
-<div class="mb-2 d-flex flex-row-reverse"> 
-      <?php include 'modal/add_payment_method_modal.php'; ?>
-</div>
-
-<?php
+<div class="card">
+  <div class="card-body ms-2">
+    <h2 class="card-title">ช่องทางการเงิน</h2>
+    <div class="mb-2 d-flex flex-row-reverse"> 
+        <?php include 'modal/add_payment_method_modal.php'; ?>
+    </div>
+    <?php
     $payment_list_query = "SELECT * FROM `payment_method`";
     $select_payment_list = mysqli_query($db,$payment_list_query);
     
 ?>
-    <h2>ช่องทางการเงิน</h2>
     <table id="paymentTable" class="table table-striped" style="width:100%">
         <thead>
             <tr>
@@ -145,6 +145,10 @@ if (isset($_POST['edit_paym'])) {
         ?>
         </tbody>
     </table>
+
+  </div>
+</div>
+
 
 
 

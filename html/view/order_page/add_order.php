@@ -17,20 +17,16 @@
 							</select>
 						</div>
 					</div>
-					<div class="form-check form-switch mb-2">
-						<input class="form-check-input" onchange="changetoedit()" type="checkbox" id="SwitchCheck">
-						<label class="form-check-label" for="SwitchCheck">ส่งเป็นของขวัญ</label>
-					</div>
 					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">ขื่อ</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="text" name="name" value="<?= $user['name']; ?>">
+						<input class="form-control" type="text" name="name" value="<?= $user['name']; ?>" required>
 						</div>
 					</div>
 					<div class="row mb-2">
 						<label class="col-sm-2 col-sm-2 col-form-label">นามสกุล</label>
 						<div class="col-sm-10">
-						<input class="form-control" type="text" name="surname" value="<?= $user['surname']; ?>">
+						<input class="form-control" type="text" name="surname" value="<?= $user['surname']; ?>" required>
 						</div>
 					</div>
 					<div class="row mb-2">

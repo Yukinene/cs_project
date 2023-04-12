@@ -3,7 +3,10 @@ require '../../inc/header.php';
 $log_materials = mysqli_query($db, "SELECT * FROM `log_materials` WHERE `material_id` = ".$_GET['id']);
 $material = mysqli_fetch_assoc(mysqli_query($db, "SELECT * FROM `materials` WHERE `material_id` = ".$_GET['id']));
 ?>
-้<h2>ประวัติการเข้าออกวัตถุดิบ : <?=$material['material_name']?></h2>
+<div class="card">
+        <div class="card-body ms-2">
+                
+้<h2 class="card-title">ประวัติการเข้าออกวัตถุดิบ : <?=$material['material_name']?></h2>
 <?php
 if (mysqli_num_rows($log_materials) > 0) {
 $amount = 0;
@@ -50,6 +53,8 @@ $amount = 0;
 </table>       
 </div>
 
+        </div>
+</div>
 <script>
         $(document).ready(function () {
             $("#logTable").DataTable({

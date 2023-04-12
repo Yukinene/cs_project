@@ -18,8 +18,9 @@
         header('location: ../../index.php');
     }
 ?>
-<div class="container">
-<section class="products">
+<div class="card">
+    <div class="card-body ms-2">
+    <section class="products">
    <h1 class="heading">สินค้าประเภท<?= $category['category'] ?></h1>
    <div class="row">      
     <?php
@@ -43,6 +44,7 @@
   </div>
 </div>
 </section>
+    </div>
 <?php
 require_once("../../inc/footer.php");
 ?>

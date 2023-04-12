@@ -1,19 +1,4 @@
 <script>
-function changetoedit() {
-  if ($("#SwitchCheck").prop("checked")) {
-	<?php foreach ($profile as $value) 
-	{ ?>
-		$("input[name=<?=$value?>]").prop('readonly', false);
-	<?php } ?>
-  }
-  else
-  {
-	<?php foreach ($profile as $value) 
-	{ ?>
-		$("input[name=<?=$value?>]").prop('readonly', true);
-	<?php } ?>
-  }
-}
 function showProvinces() {
     let input_province = document.querySelector("#province");
     let url = "https://ckartisan.com/api/provinces";
@@ -136,8 +121,7 @@ document
     showZipcode();
     });
         $(document).ready(function () {
-          changetoedit();
-    showProvinces();
+        showProvinces();
             $("#cartTable").DataTable({
               "order": [[ 0, "desc" ]],
         "responsive": true,
