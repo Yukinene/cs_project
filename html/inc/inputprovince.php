@@ -13,7 +13,7 @@ function showDistrict() {
                 var result = JSON.parse(data);
                 $.each(result, function(index, item){
                     $('#district').append(
-                        $('<option></option>').val(item.id).html(item.name_th)
+                        $('<option></option>').val(item.id).html(item.name_th);
                     );
                 });
             }
@@ -34,7 +34,7 @@ function showSubDistrict() {
                 $.each(result, function(index, item){
                     if (item.zip_code != 0) {
                         $('#sub_district').append(
-                            $('<option></option>').val(item.id).html(item.name_th)
+                            $('<option></option>').val(item.id).html(item.name_th);
                         );
                     }
                 });
