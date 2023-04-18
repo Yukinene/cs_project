@@ -23,11 +23,11 @@ if (isset($_POST['add_order'])) {
         }
         else {
           $coupon_ticket = mysqli_fetch_assoc(mysqli_query($db,"SELECT * FROM `coupons` WHERE `coupon_name` = '".$coupon."'"));
-          if (($amount - $coupon_ticket['coupon_price']) > 0) {
-            $amount -= $coupon_ticket['coupon_price'];
+          if ($coupon_ticket['coupon_price']+ceil($coupon_ticket['coupon_price']*(5/100)) < $amount) {
+             $amount = $amount - $coupon_ticket['coupon_price'];
           }
           else {
-            array_push($errors,"ไม่สามารถใช้งานได้เนื่องจากคูปองมีมูลค่าสูงกว่ามูลค่าสินค้าทั้งหมด");
+            array_push($errors,"มูลค่าของคูปองไม่เพียงพอที่จะสามารถใช้งานได้");
           }
         }
       }
