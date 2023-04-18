@@ -46,6 +46,10 @@
 						<div class="col-sm-10">
                             <select class="form-select" type="text" id="province" name="province" required>
                             <option value="">กรุณาเลือกจังหวัด</option>
+							<?php $province_query = mysqli_query($db,"SELECT * FROM `provinces`");
+							while($province = mysqli_fetch_assoc($province_query)){ ?>
+								<option value="<?=$province['id']?>"><?=$province['name_th']?>
+							<?php } ?> 
                             </select>
 						</div>
 					</div>
