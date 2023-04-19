@@ -21,7 +21,7 @@
             </div>
             <div class="form-group">
                 <label>ส่วนลดราคา</label>
-                <input class="form-control" type="number" name="coupon_price" min="1" max="1000" required>
+                <input class="form-control" type="number" name="coupon_price" min="25" max="1000" required>
             </div>
             <div class="form-group">
                 <label>วันหมดอายุ</label>
