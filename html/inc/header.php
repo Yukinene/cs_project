@@ -57,7 +57,8 @@
               <li class="nav-item"><a name="material_admin" href="../../view/admin_page/material_admin.php" class="nav-link">วัตถุดิบ</a></li>
               <li class="nav-item"><a name="category_admin" href="../../view/admin_page/category_admin.php" class="nav-link">ประเภทสินค้า</a></li>
               <li class="nav-item"><a name="payment_method_admin" href="../../view/admin_page/payment_method_admin.php" class="nav-link">ช่องทางการจ่ายเงิน</a></li>
-              <li class="nav-item"><a name="tier_admin" href="../../view/admin_page/tier_admin.php" class="nav-link">ระดับและค่าขนส่ง</a></li>
+              <li class="nav-item"><a name="tier_admin" href="../../view/admin_page/tier_admin.php" class="nav-link">ระดับ</a></li>
+              <li class="nav-item"><a name="freight_admin" href="../../view/admin_page/freight_admin.php" class="nav-link">ค่าขนส่ง</a></li>
               <li class="nav-item"><a name="order_admin" href="../../view/admin_page/order_admin.php" class="nav-link">คำสั่งซื้อ</a></li>
             </ul>
           </li>

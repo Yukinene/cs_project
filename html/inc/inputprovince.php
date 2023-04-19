@@ -13,12 +13,35 @@ function showDistrict() {
                 var result = JSON.parse(data);
                 $.each(result, function(index, item){
                     $('#district').append(
-                        $('<option></option>').val(item.id).html(item.name_th);
+                        $('<option></option>').val(item.id).html(item.name_th)
                     );
                 });
             }
         });
     }
+}
+function freightCalculator() {
+    var provinceId = $('#province').val();
+    var totalamount_afterdiscount = document.getElementById("totalamount_afterdiscount").value;
+    if (provinceId == '') {
+        provinceId = 0;
+    }
+    $.ajax({
+            type: 'POST',
+            data: {province_id: provinceId},
+            url: '../../inc/get/get_freight.php',
+            success: function(data) {
+                var result = JSON.parse(data);
+                $.each(result, function(index, item){
+                    var freight_cost_label = (item.price.toString()) + " บาท";
+                    $('#freight_cost_label').html(freight_cost_label);
+                    let total_amount = parseInt(item.price) + parseInt(totalamount_afterdiscount);
+                    var totalamount_final_label = (total_amount.toString()) + " บาท";
+                    $('#totalamount_final_label').html(totalamount_final_label);
+                    document.getElementById("amount").value = total_amount;
+                });
+            }
+        });
 }
 function showSubDistrict() {
     var districtId = $('#district').val();
@@ -34,7 +57,7 @@ function showSubDistrict() {
                 $.each(result, function(index, item){
                     if (item.zip_code != 0) {
                         $('#sub_district').append(
-                            $('<option></option>').val(item.id).html(item.name_th);
+                            $('<option></option>').val(item.id).html(item.name_th)
                         );
                     }
                 });
@@ -66,6 +89,7 @@ document
     .querySelector("#province")
     .addEventListener("change", (event) => {
     showDistrict();
+    freightCalculator();
     });
 document
     .querySelector("#district")

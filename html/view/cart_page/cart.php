@@ -80,62 +80,9 @@ $profile = array("name", "surname");
             ?>
         </tbody>
       </table>
-      <h2>สั่งซื้อสินค้า</h2>
+      <h3 class="mt-2">สั่งซื้อสินค้า</h3>
   	    <div class="row">
-          <div class="card col-4">
-              <div class="card-body">
-                <h5 class="card-title">ราคาสินค้า</h5>
-                <div class="card-text d-flex justify-content-between">
-                  <p>ราคาทั้งหมด</p>
-                  <p> <?php echo $totalamount ?> บาท</p>
-                </div>
-                <div class="card-text d-flex justify-content-between">
-                  <p class="text">ส่วนลด
-                  <?php
-                      $tier = 'ลูกค้า';
-                      $select_discounts = mysqli_query($db, "SELECT * FROM `discount` WHERE `order_price` < '".$user['total_amount']."'");
-                        if(mysqli_num_rows($select_discounts) > 0){
-                            while($fetch_discounts = mysqli_fetch_assoc($select_discounts)){
-                              if ($discount < $fetch_discounts['order_price']) {
-                                $tier = $fetch_discounts['tier'];
-                                $discount = $fetch_discounts['order_price'];
-                                $discount_percentage = $fetch_discounts['discount_percentage'];
-                              }
-                            }
-                          }
-                      echo $discount_percentage .'%';
-                      if ($tier != 'ลูกค้า') {
-                        echo ' (จากระดับ'.$tier.')';
-                      }
-                      echo '</p>';
-                      echo '<p>'.$totalamount*($discount_percentage/100);
-                      $totalamount_afterdiscount = $totalamount-$totalamount*($discount_percentage/100)
-                  ?> บาท</p>
-                </div>
-                <div class="card-text d-flex justify-content-between">
-                  <p class="text">ค่าขนส่ง
-                  <?php
-                      $freight_query = "SELECT * FROM `freight`";
-                      $select_freight_list = mysqli_query($db,$freight_query);
-                      $freight = mysqli_fetch_assoc($select_freight_list);
-                      if ($totalamount >= $freight['ordermore']) {
-                        $freight_cost = 0;
-                      }
-                      else {
-                        $freight_cost = $freight['price'];
-                      }
-                      echo '</p>';
-                      echo '<p>'.$freight_cost;
-                      $totalamount = $totalamount_afterdiscount + $freight_cost;
-                  ?> บาท</p>
-                </div>
-                <div class="card-text d-flex justify-content-between">
-                  <p>ราคาสุทธิ</p>
-                  <p><?php echo $totalamount ?> บาท</p>
-                </div>
-              </div>
-          </div>
-          <div class="col-8">
+          <div class="col-6">
             <div class="card">
               <div class="card-body">
                 <h5 class="card-title">ที่อยู่ในการจัดส่ง</h5>
@@ -143,6 +90,7 @@ $profile = array("name", "surname");
               </div>
             </div>
           </div>
+          <div class="col-4"></div>
         </div>
   </div>
 </div>

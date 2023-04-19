@@ -6,12 +6,11 @@
 	include '../../inc/completes.php';
 	include '../../inc/errors.php';
 ?>
-<title>ระบบจัดการระดับแบะค่าขนส่ง (สำหรับผู้จัดการระบบ)</title>
+<title>ระบบจัดการระดับลูกค้า (สำหรับผู้จัดการระบบ)</title>
 <div class="card">
   <div class="card-body ms-2">
   <h2 class="card-title">ระดับและค่าขนส่ง</h2>
-  <div class="mb-2 d-flex flex-row-reverse gap-3"> 
-        <?php include 'modal/freight_modal.php'; ?>
+  <div class="mb-2 d-flex flex-row-reverse gap-3">
         <?php include 'modal/add_tier_modal.php'; ?>
   </div>
 <?php

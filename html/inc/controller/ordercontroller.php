@@ -2,17 +2,29 @@
 if (isset($_POST['add_order'])) {
     // receive all input values from the form
     $user_id = mysqli_real_escape_string($db, $_POST['user_id']);
-    $amount = mysqli_real_escape_string($db, $_POST['amount']);
     $payment_method = mysqli_real_escape_string($db, $_POST['payment_method']);
     $name = mysqli_real_escape_string($db, $_POST['name']);
     $surname = mysqli_real_escape_string($db, $_POST['surname']);
     $building_no = mysqli_real_escape_string($db, $_POST['building_no']);
     $line = mysqli_real_escape_string($db, $_POST['line']);
-    $province = mysqli_real_escape_string($db, $_POST['province']);
-    $district = mysqli_real_escape_string($db, $_POST['district']);
-    $sub_district = mysqli_real_escape_string($db, $_POST['sub_district']);
     $country = mysqli_real_escape_string($db, $_POST['country']);
+
+    $province_database = mysqli_fetch_assoc(mysqli_query(
+      $db,"SELECT * FROM `provinces` WHERE `id` = ".mysqli_real_escape_string($db, $_POST['province'])
+    ));
+    $district_database = mysqli_fetch_assoc(mysqli_query(
+      $db,"SELECT * FROM `districts` WHERE `id` = ".mysqli_real_escape_string($db, $_POST['district'])
+    ));
+    $sub_district_database = mysqli_fetch_assoc(mysqli_query(
+      $db,"SELECT * FROM `sub_districts` WHERE `id` = ".mysqli_real_escape_string($db, $_POST['sub_district'])
+    ));
+    $province = $province_database['name_th'];
+    $district = $district_database['name_th'];
+    $sub_district = $sub_district_database['name_th'];
     $postal_code = mysqli_real_escape_string($db, $_POST['postal_code']);
+    
+    $amount = mysqli_real_escape_string($db, $_POST['amount']);
+    
     if ($_POST['coupon'] != NULL) {
       $coupon = $_POST['coupon'];
       $date = date("Y-m-d");  

@@ -1,8 +1,8 @@
 <?php 
-if (isset($_POST['cha_frei'])) {
+if (isset($_POST['add_frei'])) {
+    $province_id = mysqli_real_escape_string($db, $_POST['province']);
     $price = mysqli_real_escape_string($db, $_POST['price']);
-    $ordermore = mysqli_real_escape_string($db, $_POST['ordermore']);
-    $query = "UPDATE `freight` SET `price`='".$price."',`ordermore`='".$ordermore."' WHERE 1";
+    $query = "INSERT INTO `freight`(`province_id`, `price`) VALUES ('".$province_id."','".$price."')";
     mysqli_query($db, $query);
     array_push($completes, "แก้ไขค่าขนส่งสำเร็จ");
   }
