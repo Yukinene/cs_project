@@ -10,11 +10,9 @@
             <th width='20%'>
               ค่าขนส่ง
             </th>
-            <?php //if (checkrole('admin')) { ?>
-                <th width='20%'>
-                    ตัวเลือก
-                </th>
-            <? //} ?>
+            <th width='20%'>
+                ตัวเลือก
+            </th>
           </tr>
 			</center>
         </thead>
@@ -39,11 +37,17 @@
                 <th>
                     <?=$fetch_freight['price']?>
                 </th>
-                <?php //if (checkrole('admin')) { ?>
-                    <th>
-                        <?php include '../freight_page/modal/edit_freight_modal.php' ?>
-                    </th>
-                <? //} ?>
+                <th>
+                    <div class="mb-2 d-flex gap-3 flex-row">
+                        <?php include '../freight_page/modal/edit_freight_modal.php'; ?>
+                        <?php if ($fetch_freight['province_id'] != 0) {?>
+                            <form action="" method="post" enctype="multipart/form-data">
+                                <input type="hidden" name="province" id="province" value="<?=$fetch_freight['province_id']?>">
+                                <input type="submit" class="btn btn-danger" value="ลบ" name="del_frei">
+                            </form>
+                        <?php } ?>
+                    </div>
+                </th>
             </tr>
             <?php
                 }
@@ -62,7 +66,7 @@
             [5, 10, 25],
             [5, 10, 25]
           ],
-        "pageLength": 25,
+        "pageLength": 5,
         language: 
         {
           url: '//cdn.datatables.net/plug-ins/1.12.1/i18n/th.json'

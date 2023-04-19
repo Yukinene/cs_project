@@ -20,8 +20,7 @@ $freight_default = mysqli_fetch_assoc($select_freight_default_list);
                 echo $fetch_province['name_th'];
               } else {
                 echo "จังหวัดอื่นๆทั่วประเทศไทย";
-              }
-          ?>
+              }?>
         </h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
@@ -37,8 +36,7 @@ $freight_default = mysqli_fetch_assoc($select_freight_default_list);
             echo $freight_default['price'];
             } else {
             echo 500;
-        }
-        ?>" required>
+        }?>" required>
 			</div>
       </div>
       <div class="modal-footer">
