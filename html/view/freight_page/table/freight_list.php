@@ -10,6 +10,11 @@
             <th width='20%'>
               ค่าขนส่ง
             </th>
+            <?php //if (checkrole('admin')) { ?>
+                <th width='20%'>
+                    ตัวเลือก
+                </th>
+            <? //} ?>
           </tr>
 			</center>
         </thead>
@@ -34,6 +39,11 @@
                 <th>
                     <?=$fetch_freight['price']?>
                 </th>
+                <?php //if (checkrole('admin')) { ?>
+                    <th>
+                        <?php include '../freight_page/modal/edit_freight_modal.php' ?>
+                    </th>
+                <? //} ?>
             </tr>
             <?php
                 }

@@ -1,6 +1,6 @@
 <?php
 include('db.php');
-$district = "SELECT * FROM `districts` WHERE `province_id` = {$_POST['province_id']}";
+$district = "SELECT * FROM `districts` WHERE `province_id` = {$_POST['province_id']} AND `name_th` NOT LIKE '%*%' ";
 $district_query = mysqli_query($db, $district);
 $district_json = array();
 while($district_result = mysqli_fetch_assoc($district_query)) {    
