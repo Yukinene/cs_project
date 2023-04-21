@@ -123,6 +123,23 @@ if (isset($_POST['change_status'])) {
           mysqli_query($db, "
             INSERT INTO `account`(`amount`, `info`)
             VALUES (".$order_amount.",'".$info."')");
+          $month = date("m");
+          $year = date("Y");
+          $user_order = mysqli_query($db,"SELECT * FROM user_order WHERE user='".$order_user."' AND month='".$month."' AND year='".$year."'");
+          if(mysqli_num_rows($user_order) < 1){
+              $user_order_query = "INSERT `user_order`(`user`, `month`, `year`, `amount`) 
+                  VALUES ('".$order_user."','".$month."','".$year."','".$amount."')";
+          }
+          else {
+              $fetch_user_order = mysqli_fetch_assoc($user_order);
+              $old_amount = $fetch_user_order['amount'];
+              $user_order_query = "UPDATE `user_order` SET `amount`=".$amount+$old_amount." WHERE user='".$order_user."' AND month='".$month."' AND year='".$year."'";
+          }
+          mysqli_query($db, $user_order_query);
+          $sum_amount = mysqli_query($db,"SELECT SUM(`amount`) FROM `user_order` WHERE `user` = '".$order_user."'");
+          $fetch_sum_amount = mysqli_fetch_assoc($sum_amount);
+          $user_total_amount = "UPDATE `users` SET `total_amount`=".$fetch_sum_amount['SUM(`amount`)']." WHERE id='".$order_user."'";
+          mysqli_query($db, $user_total_amount);
         }
         array_push($completes, "เสร็จสิ้น");
       }
@@ -144,19 +161,10 @@ if (isset($_POST['change_status'])) {
     $check_cancel = $_POST['cancel_order_Check'];
     $status = 1;
     if ($order_status < 2 && $check_cancel === "confirm") {
+      // Finally, approve cancel order
       $query = "UPDATE `orders` SET `status` = '$status' WHERE `orders`.`id` = '$order_id'";
-      if (mysqli_query($db, $query)) {
-        // Finally, approve cancel order
-        $user_order = mysqli_query($db,"SELECT * FROM user_order WHERE user='".$order_user."' AND month='".$month."' AND year='".$year."'");
-        $fetch_user_order = mysqli_fetch_assoc($user_order);
-        $old_amount = $fetch_user_order['amount'];
-        $user_order_query = "UPDATE `user_order` SET `amount`=".$old_amount-$order_amount." WHERE user='".$order_user."' AND month='".$month."' AND year='".$year."'";
-        mysqli_query($db, $user_order_query);
-        $sum_amount = mysqli_query($db,"SELECT SUM(`amount`) FROM `user_order` WHERE `user` = '".$order_user."'");
-        $fetch_sum_amount = mysqli_fetch_assoc($sum_amount);
-        mysqli_query($db, "UPDATE `users` SET `total_amount`=".$fetch_sum_amount['SUM(`amount`)']." WHERE id='".$order_user."'");
-        array_push($completes, "เสร็จสิ้น");
-      }
+      mysqli_query($db, $query);
+      array_push($completes, "เสร็จสิ้น");
     }
     else {
       array_push($errors, "ไม่สามารถทำได้");

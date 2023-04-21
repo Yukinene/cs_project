@@ -62,10 +62,9 @@
               <li class="nav-item"><a name="order_admin" href="../../view/admin_page/order_admin.php" class="nav-link">คำสั่งซื้อ</a></li>
             </ul>
           </li>
-            
-          
               <?php
           } ?>
+            <li class="nav-item"><span><a name="cart" href="../../view/cart_page/cart.php" class="nav-link">รถเข็น <i class="bi bi-cart"></i></a></span></li>
               <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" href="#" id="navbarDarkDropdownMenuLink" role="button" data-bs-toggle="dropdown" aria-expanded="false">
               <?=$_SESSION['username']?> <i class="bi bi-person-circle"></i>
@@ -92,13 +91,9 @@
                   <a name="tier_name" class="nav-link text-info">ระดับ : <br><?= $tier ?></a>
                 </li>
                 <li class="nav-item"><a name="profile" href="../../view/profile_page/profile.php" class="nav-link">ข้อมูลผู้ใช้</a></li>
-                <?php if(checkrole('admin')) { ?>
-                <li class="nav-item"><span><a name="cart" href="../../view/cart_page/cart.php" class="nav-link">รถเข็น <i class="bi bi-cart"></i></a></span></li>
-                <?php } ?>
           <?php if (checkrole('user')) {
           ?>
               <li class="nav-item"><a name="profile" href="../../view/profile_page/order_user.php" class="nav-link">คำสั่งซื้อ</a></li>
-              <li class="nav-item"><span><a name="cart" href="../../view/cart_page/cart.php" class="nav-link">รถเข็น <i class="bi bi-cart"></i></a></span></li>
           <?php
           } ?>    
               <li class="nav-item"><span><a name="logout" href="../../util/registration/logout.php" class="nav-link">ออกจากระบบ <i class="bi bi-power"></i></a></span></li>

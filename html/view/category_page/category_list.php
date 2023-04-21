@@ -25,7 +25,7 @@
                 <th>
                     <form action="" method="post" enctype="multipart/form-data">
                       <input type="hidden" name="category" id="category" value="<?=$fetch_category_list['category']?>">
-                      <input type="submit" class="btn btn-danger" value="ลบ" name="del_cate">
+                      <input type="submit" class="btn btn-danger" onClick="return confirm('จะลบประเภท<?=$fetch_category_list['category']?>หรือไม่?')" value="ลบ" name="del_cate">
                     </form>
                 </th>
             </tr><?php

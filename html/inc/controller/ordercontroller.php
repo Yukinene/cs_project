@@ -39,7 +39,7 @@ if (isset($_POST['add_order'])) {
              $amount = $amount - $coupon_ticket['coupon_price'];
           }
           else {
-            array_push($errors,"มูลค่าของคูปองไม่เพียงพอที่จะสามารถใช้งานได้");
+            array_push($errors,"มูลค่าของคูปองไม่เพียงพอที่จะสามารถใช้งานได้ตามที่กำหนด");
           }
         }
       }
@@ -73,25 +73,6 @@ if (isset($_POST['add_order'])) {
               mysqli_query($db, "INSERT INTO `order_products`(`order_id`, `product_id`, `quantity`) 
               VALUES (".$order_id["max(`id`)"].",".$item.",".$quantity.")");
         }
-        $month = date("m");
-        $year = date("Y");
-        $user_order = mysqli_query($db,"SELECT * FROM user_order WHERE user='".$user_id."' AND month='".$month."' AND year='".$year."'");
-        if(mysqli_num_rows($user_order) < 1){
-            $user_order_query = "INSERT `user_order`(`user`, `month`, `year`, `amount`) 
-                VALUES ('".$user['id']."','".$month."','".$year."','".$amount."')";
-            
-        }
-        else {
-            $fetch_user_order = mysqli_fetch_assoc($user_order);
-            $old_amount = $fetch_user_order['amount'];
-            $user_order_query = "UPDATE `user_order` SET `amount`=".$amount+$old_amount." WHERE user='".$user_id."' AND month='".$month."' AND year='".$year."'";
-            
-        }
-        mysqli_query($db, $user_order_query);
-        $sum_amount = mysqli_query($db,"SELECT SUM(`amount`) FROM `user_order` WHERE `user` = '".$user_id."'");
-        $fetch_sum_amount = mysqli_fetch_assoc($sum_amount);
-        $user_total_amount = "UPDATE `users` SET `total_amount`=".$fetch_sum_amount['SUM(`amount`)']." WHERE id='".$user_id."'";
-        mysqli_query($db, $user_total_amount);
         array_push($completes, "รายการสินค้าเสร็จสิ้น");
         unset($cart);
         $_SESSION['cart'] = NULL;

@@ -64,7 +64,7 @@
                       <?php
                       if ($fetch_product['product_status'] === "active") 
                       {?>
-                        <input type="submit" class="btn btn-danger" value="ปิดการขาย" name="change_status">
+                        <input type="submit" class="btn btn-danger" onClick="return confirm('จะปิดการขาย<?=$fetch_product['product_name']?>หรือไม่?')" value="ปิดการขาย" name="change_status">
                       <?php }
                       else { ?>
                         <input type="submit" class="btn btn-success" value="เปิดการขาย" name="change_status">

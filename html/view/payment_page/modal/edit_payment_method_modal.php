@@ -1,8 +1,8 @@
 <?php if (!($fetch_payment_list['method'] === "เก็บเงินปลายทาง")) { ?>
-    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editpaymentModal<?=$fetch_payment_list['method']?>">
+    <button type="button" class="btn btn-secondary" data-bs-toggle="modal" data-bs-target="#editpaymentmethodModal<?=$fetch_payment_list['method']?>">
         แก้ไข
     </button>
-    <div class="modal fade" id="editpaymentModal<?=$fetch_payment_list['method']?>" tabindex="-1" aria-labelledby="editpaymentModalLabel" aria-hidden="true">
+    <div class="modal fade" id="editpaymentmethodModal<?=$fetch_payment_list['method']?>" tabindex="-1" aria-labelledby="editpaymentmethodModalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">

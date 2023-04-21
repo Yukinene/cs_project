@@ -23,7 +23,7 @@
                     <form method="post" action="" enctype="multipart/form-data">
                         <input type="hidden" name="product_id" id="product_id" value="<?=$product_info['product_id']?>">
                         <input type="hidden" name="product_category" id="product_category" value="<?=$fetch_product_categories['category']?>">
-                        <button class="btn btn-danger" type="submit" name="del_prod_cate">ลบ</button>
+                        <button class="btn btn-danger" type="submit" onClick="return confirm('ลบ<?=$product_info['product_name']?>จากประเภท<?=$fetch_product_categories['category']?>หรือไม่?')" name="del_prod_cate">ลบ</button>
                     </form>
                 </th>
             </tr>            

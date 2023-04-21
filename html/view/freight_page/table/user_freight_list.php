@@ -1,4 +1,3 @@
-<h3>จังหวัด :</h3>
 <div class="table-responsive">
     <table id="FreightTable" class="table table-striped" style="width:100%">
         <thead>
@@ -10,15 +9,12 @@
             <th width='20%'>
               ค่าขนส่ง
             </th>
-            <th width='20%'>
-                ตัวเลือก
-            </th>
           </tr>
 			</center>
         </thead>
         <tbody>
         <?php
-        $freight_list_query = mysqli_query($db,"SELECT * FROM `freight` ORDER BY `freight`.`province_id` DESC");
+        $freight_list_query = mysqli_query($db,"SELECT * FROM `freight` WHERE `province_id` != 0");
         if (mysqli_num_rows($freight_list_query) > 0) {
             while($fetch_freight = mysqli_fetch_assoc($freight_list_query)){
         ?>
@@ -37,22 +33,20 @@
                 <th>
                     <?=$fetch_freight['price']?>
                 </th>
-                <th>
-                    <div class="mb-2 d-flex gap-3 flex-row">
-                        <?php include '../freight_page/modal/edit_freight_modal.php'; ?>
-                        <?php if ($fetch_freight['province_id'] != 0) {?>
-                            <form action="" method="post" enctype="multipart/form-data">
-                                <input type="hidden" name="province" id="province" value="<?=$fetch_freight['province_id']?>">
-                                <input type="submit" class="btn btn-danger" value="ลบ" name="del_frei">
-                            </form>
-                        <?php } ?>
-                    </div>
-                </th>
             </tr>
             <?php
                 }
             }
+        $default_fetch_freight = mysqli_fetch_assoc(mysqli_query($db,"SELECT * FROM `freight` WHERE `province_id` = 0"));
         ?>
+            <tr>
+                <th>
+                    จังหวัดอื่นๆทั่วประเทศไทย
+                </th>
+                <th>
+                    <?=$default_fetch_freight['price']?>
+                </th>
+            </tr>
         </tbody>
     </table>
 </div>

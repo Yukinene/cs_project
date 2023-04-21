@@ -26,71 +26,38 @@ $profile = array("name", "surname");
 <div class="card">
   <div class="card-body">
   <h2 class="card-title">รถเข็น</h2>
-    <table id="cartTable" class="table table-striped" style="width:100%">
-        <thead>
-            <tr>
-            <th width='5%'>
-              ลำดับ
-            </th>
-            <th width='15%'>
-              
-            </th>
-            <th width='40%'>
-              สินค้า
-            </th>
-            <th width='10%'>
-              จำนวน
-            </th>
-            <th width='10%'>
-              ราคา
-            </th>
-            <th width='20%'>
-              ตัวเลือก
-            </th>
-          </tr>
-        </thead>
-        <tbody>
-            <?php
-            // Display the cart
-            foreach($cart as $item => $quantity) {
-              $products = "SELECT * FROM `products` WHERE `product_id` = '".$item."'";
-              $product = mysqli_fetch_array(mysqli_query($db, $products));
-              echo '<tr>';
-              
-              echo '<th>' . $i . '</th>';
-              echo '<th><img src="../../images/products_image/'.$product['product_img'].'" width="150" height="75" alt=""></th>';
-              echo '<th>' . $product['product_name'] . '</th>';
-              echo '<th>' . $quantity . '</th>';
-              echo '<th>' . $product['product_price']*$quantity . '</th>';
-              echo '<th>';
-              echo '<form action="" method="post" enctype="multipart/form-data">
-                  <input type="hidden" name="product_id" value="'.$item.'"">';
-                  echo '<input type="submit" class="btn btn-success" value="เพิ่ม" name="add_to_cart">';
-                  if($quantity > 1)
-                  {
-                    echo '<input type="submit" class="btn btn-warning" value="ลด" name="remove_quantity">';
-                  }
-              echo '<input type="submit" class="btn btn-danger" value="ลบ" name="remove">';
-              echo '</form>';
-              echo '</th>';
-              echo '</tr>';
-              $totalamount += $product['product_price']*$quantity;
-              $i++;
-            }
-            ?>
-        </tbody>
-      </table>
-      <h3 class="mt-2">สั่งซื้อสินค้า</h3>
-  	    <div class="row">
+        <div class="row mb-2">
+          <div class="col-12">
+            <?php include 'table/cart_table.php' ?>
+          </div>
+        </div>
+        <div class="mb-2 d-flex flex-row-reverse gap-3">
+            <a class="btn btn-info" href="../product_page/product_list.php">สั่งซื้อสินค้าเพิ่มเติม</a>
+        </div>
+        <hr>
+  	    <div class="row mt-2">
           <div class="col-6">
             <div class="card">
               <div class="card-body">
-                <h5 class="card-title">ที่อยู่ในการจัดส่ง</h5>
                 <?php include '../order_page/add_order.php';  ?>
               </div>
             </div>
           </div>
-          <div class="col-4"></div>
+          <div class="col-6">
+            <h3>เกี่ยวกับการชำระเงิน</h3>
+            <div class="card">
+              <div class="card-body">
+                <h5 class="card-title">ระดับและส่วนลด</h5>
+                <?php include '../tier_page/user_tier_list.php';  ?>
+              </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                  <h5 class="card-title">ค่าขนส่ง</h5>
+                  <?php include '../freight_page/table/user_freight_list.php';  ?>
+                </div>
+            </div>
+          </div>
         </div>
   </div>
 </div>

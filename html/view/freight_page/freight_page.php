@@ -1,6 +1,6 @@
 <div class="row mb-2">
     <div class="col-6 border border-dark">
-        <?php include 'table/freight_list.php'; ?>
+        <?php include 'table/admin_freight_list.php'; ?>
     </div>
 </div>
 

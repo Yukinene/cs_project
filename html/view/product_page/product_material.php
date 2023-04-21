@@ -49,7 +49,7 @@ include '../../inc/errors.php';
                   <form action="" method="post" enctype="multipart/form-data">
                     <input type="hidden" name="product_id" id="product_id" value="<?=$fetch_product_materials['product_id']?>">
                     <input type="hidden" name="material_id" id="material_id" value="<?=$fetch_product_materials['material_id']?>">
-                    <input type="submit" class="btn btn-danger" value="ลบวัตถุดิบ" name="del_pmat">
+                    <input type="submit" class="btn btn-danger" onClick="return confirm('ลบ<?=$fetch_materials['material_name']?>ออกจาก<?=$fetch_products['product_name']?>หรือไม่?')" value="ลบวัตถุดิบ" name="del_pmat">
                   </form>
                 </div>
 
