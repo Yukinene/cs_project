@@ -14,23 +14,11 @@ if(mysqli_num_rows($select_plan_products) > 0){
               สินค้า
             </th>
             <th width='20%'>
-              ในคำสั่งซื้อ
-            </th>
-            <th width='20%'>
-              นอกคำสั่งซื้อ
+              ที่ผลิต
             </th>
             <?php if ($plans['status'] == 'เตรียมแผน') {?>
-            <th width='20%'>
-              คงคลัง
-            </th>
             <th width='40%'>
               ตัวเลือก
-            </th>
-            <?php
-            } ?>
-            <?php if ($plans['status'] != 'เตรียมแผน') {?>
-            <th width='40%'>
-              จำนวนที่ทำทั้งหมด
             </th>
             <?php
             } ?>
@@ -47,25 +35,13 @@ if(mysqli_num_rows($select_plan_products) > 0){
                     <?=$fetch_products['product_name']?>
                 </th>
                 <th>
-                    <?=$fetch_plan_products['order_amount']?>
-                </th>
-                <th>
                     <?=$fetch_plan_products['plan_amount']?>
                 </th>
                 <?php if ($plans['status'] == 'เตรียมแผน') {?>
-                <th>
-                    <?=$fetch_products['product_amount']?>
-                </th>
 				        <th>
                     <?php
                       include __DIR__.'\..\modal\del_plan_product_modal.php';
                     ?>
-                </th>
-                <?php
-            } ?>
-            <?php if ($plans['status'] != 'เตรียมแผน') {?>
-				        <th>
-                  <?=$fetch_plan_products['total_amount']?>
                 </th>
                 <?php
             } ?>

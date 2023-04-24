@@ -91,7 +91,20 @@ if (isset($_POST['add_payment'])) {
       // Finally, approve shipment order
       array_push($completes, "เสร็จสิ้น");
     }
-  }  
+  }
+//product section
+if (isset($_POST['pre_prod'])) {
+  $order_id = $_POST['order_id'];
+  $status = $_POST['select_status'];
+  $order_products = mysqli_query($db,"SELECT * FROM `order_products` WHERE `order_id` =".$order_id);
+  while ($fetch_order_products = mysqli_fetch_assoc($order_products)) {
+    $fetch_product = mysqli_fetch_assoc(mysqli_query($db,"SELECT * FROM `products` WHERE `product_id` =".$fetch_order_products['product_id']));
+    $amount = $fetch_product['product_amount'] - $fetch_order_products['quantity'];
+    mysqli_query($db,"UPDATE `products` SET `product_amount`='".$amount."' WHERE `product_id` =".$fetch_order_products['product_id']);
+    mysqli_query($db,"INSERT INTO `log_products`(`product_id`, `product_amount`) VALUES ('".$fetch_order_products['product_id']."','".-$fetch_order_products['quantity']."')");
+  }
+  mysqli_query($db,"UPDATE `orders` SET `status` = '$status' WHERE `orders`.`id` = '$order_id'");
+}
 //status section
 if (isset($_POST['change_status'])) {
     // receive all input values from the form
@@ -170,6 +183,7 @@ if (isset($_POST['change_status'])) {
       array_push($errors, "ไม่สามารถทำได้");
     }
   }
+
   header('location: ../show_order.php?id='.$_POST['order_id']);
 }
 else {

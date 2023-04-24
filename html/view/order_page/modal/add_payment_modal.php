@@ -47,7 +47,7 @@
                                 <center>
                             <?php if (checkrole('admin') && $order['status'] == 0) { ?>
                                     <button class="btn btn-success mb-2" type="submit" name="payment_approve">ยืนยัน</button>
-                                    <button class="btn btn-danger mb-2" type="submit" onClick="return confirm('จะลบหลักฐานหรือไม่?')" name="payment_decline">ปฏิเสธ</button>
+                                    <button class="btn btn-danger mb-2" type="submit" onClick="return confirm('จะปฏิเสธและลบหลักฐานหรือไม่?')" name="payment_decline">ปฏิเสธ</button>
                             <?php }
                                if($order['status'] == 0 && $user['id'] == $order['user_id']) {?>
                                     <button class="btn btn-danger mb-2" type="submit" onClick="return confirm('จะลบหลักฐานหรือไม่?')" name="payment_decline">ลบ</button>

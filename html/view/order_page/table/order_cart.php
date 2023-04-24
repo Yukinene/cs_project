@@ -17,6 +17,7 @@
         <tbody>
             <?php
             // Display the cart
+                $order_cart_check = 0 ;
                 if(mysqli_num_rows($order_cart) > 0){
                     while($fetch_order_cart = mysqli_fetch_assoc($order_cart)){
                         $products = "SELECT * FROM `products` WHERE `product_id` = '".$fetch_order_cart['product_id']."'";
@@ -26,6 +27,9 @@
                         echo '<th>' . $product['product_name'] . '</th>';
                         echo '<th>' . $fetch_order_cart['quantity'] . '</th>';
                         echo '</tr>';
+                        if ($product['product_amount'] < $fetch_order_cart['quantity']) {
+                            $order_cart_check = $order_cart_check + 1;
+                        }
                         $i++;
                         }
                     }

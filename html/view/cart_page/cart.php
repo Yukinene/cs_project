@@ -67,6 +67,6 @@ $profile = array("name", "surname");
 ?>
 
 <?php
-require '../../inc/inputprovince.php';
+require 'script/cart_javascript.php';
 require '../../inc/footer.php';
 ?>

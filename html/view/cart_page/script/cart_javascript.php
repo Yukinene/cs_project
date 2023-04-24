@@ -20,6 +20,47 @@ function showDistrict() {
         });
     }
 }
+function freightCalculator_instant() {
+    var instantAddress = $('#instant_address').val();
+    var totalamount_afterdiscount = document.getElementById("totalamount_afterdiscount_instant").value;
+    if (instantAddress != '') {
+    $.ajax({
+            type: 'POST',
+            data: {instant_address: instantAddress},
+            url: '../../inc/get/get_instant_freight.php',
+            success: function(data) {
+                var result = JSON.parse(data);
+                $.each(result, function(index, item){
+                    var freight_cost_label = (item.price.toString()) + " บาท";
+                    $('#freight_cost_label').html(freight_cost_label);
+                    let total_amount = parseInt(item.price) + parseInt(totalamount_afterdiscount);
+                    var totalamount_final_label = (total_amount.toString()) + " บาท";
+                    $('#totalamount_final_label').html(totalamount_final_label);
+                    document.getElementById("amount_instant").value = total_amount;
+                });
+            }
+        });
+    }
+    else {
+        provinceId = 0;
+        $.ajax({
+            type: 'POST',
+            data: {province_id: provinceId},
+            url: '../../inc/get/get_freight.php',
+            success: function(data) {
+                var result = JSON.parse(data);
+                $.each(result, function(index, item){
+                    var freight_cost_label = (item.price.toString()) + " บาท";
+                    $('#freight_cost_label').html(freight_cost_label);
+                    let total_amount = parseInt(item.price) + parseInt(totalamount_afterdiscount);
+                    var totalamount_final_label = (total_amount.toString()) + " บาท";
+                    $('#totalamount_final_label').html(totalamount_final_label);
+                    document.getElementById("amount_instant").value = total_amount;
+                });
+            }
+        });
+    }
+}
 function freightCalculator() {
     var provinceId = $('#province').val();
     var totalamount_afterdiscount = document.getElementById("totalamount_afterdiscount").value;
@@ -84,6 +125,21 @@ function showPostalcode() {
         $('#postal_code').val('');
     }
 }
+
+function changeaddress() {
+    var checkaddress = $("#Checkaddress").prop("checked");{
+        is_show('address_page_input', !checkaddress);
+        is_show('address_page_instant', checkaddress);
+    }
+}
+function is_show(str, boolean){
+    if(boolean){
+        $("div[name='"+str+"']").removeClass('visually-hidden');
+    } else {
+        $("div[name='"+str+"']").addClass('visually-hidden');
+    }
+}
+
 //EVENTS
 document
     .querySelector("#province")
@@ -102,6 +158,7 @@ document
     showPostalcode();
     });
         $(document).ready(function () {
+            changeaddress();
             $("#cartTable").DataTable({
               "order": [[ 0, "desc" ]],
         "responsive": true,

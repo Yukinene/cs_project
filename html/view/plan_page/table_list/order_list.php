@@ -14,7 +14,6 @@ if(mysqli_num_rows($select_plan_orders) > 0){
               คำสั่งซื้อที่
             </th>
             <th width='40%'>
-              
             </th>
             <?php if ($plans['status'] == 'เตรียมแผน') {?>
             <th width='40%'>

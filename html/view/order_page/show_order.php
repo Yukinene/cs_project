@@ -81,6 +81,22 @@ else {
                         </div>
                         </center>
                     </div>
+                    <div  class="<?php
+                    if ($order['status'] != 2) {
+                        echo "visually-hidden";
+                     }?>">
+                        <center>
+                        <h5 class="card-title mt-2">จัดเตรียมสินค้า</h5>
+                        <div class="mb-2">
+                            <input class="form-control" type="hidden" name="select_status" value="3">
+                            <button class="btn btn-danger mt-2 mb-1" style="--bs-btn-padding-y: .25rem; --bs-btn-padding-x: .5rem; --bs-btn-font-size: .75rem;" type="submit" name="pre_prod"
+                            <?php if ($order_cart_check > 0) {
+                                echo 'disabled';
+                            } ?>
+                            >หักสินค้าออกจากคลัง</button>
+                        </div>
+                        </center>
+                    </div>
                 <?php }
                 ?>
                 <?php

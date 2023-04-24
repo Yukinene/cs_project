@@ -30,15 +30,11 @@ else {
 </div>
 <?php if($plans['status'] == 'เตรียมแผน'){?>
 <div class="mb-2 d-flex flex-row-reverse gap-3"> 
-<?php require 'modal/add_plan_order_modal.php'; ?>
 <?php require 'modal/add_plan_product_modal.php'; ?>
 </div>
 <?php }?>
 <div class="row mb-2">
-    <div class="col-4">
-        <?php require 'table_list/order_list.php'; ?>
-    </div>
-    <div class="col-8">
+    <div class="col-12">
         <?php require 'table_list/product_list.php'; ?>
     </div>
     <div class="col-12">

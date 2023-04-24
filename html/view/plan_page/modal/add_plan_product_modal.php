@@ -49,8 +49,8 @@
                 </select>
 			</div>
       <div class="form-group mt-1">
-			    <label class="text-start">จำนวน</label>
-          <input class="form-control" type="number" name="quantity" min="1" required>
+			    <label class="text-start">จำนวน (ไม่เกิน 150 ชิ้น/สินค้า)</label>
+          <input class="form-control" type="number" name="quantity" min="1" max="150" required>
 			</div>
       </div>
       <div class="modal-footer">
