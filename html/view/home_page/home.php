@@ -8,7 +8,7 @@ if (checkusername()) {
         <div class="col-4"></div>
         <div class="col-4 text-center">
             <div class="card">
-                <h1><h1 class="fs-1 mb-3">ถั่ว เว้ย เฮ้ย</h1>
+                <h1><h1 class="fs-1 mb-3">ภูมินทร์การค้า</h1>
                 <h4 class="fs-1 mb-3">ถั่วเคลือบมะม่วงเคลือบ</h4></h1>
             </div>
         </div>

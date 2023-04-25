@@ -6,7 +6,7 @@
     <div class="row g-0">
       <div class="col-sm-6 col-md-8">
         <address>
-        <p class="mb-1"><strong>ร้าน ถั่ว เว้ย เฮ้ย</strong>
+        <p class="mb-1"><strong>ร้านภูมินทร์การค้า</strong>
         <br>
         <p class="mb-0">119/451 หมู่บ้านอัมรินทร์นิเวศน์ 3 ผัง 4 ถนนสายไหม
         เขตสายไหม แขวงสายไหม จ.กรุงเทพมหานคร 10220</p>

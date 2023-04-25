@@ -21,7 +21,6 @@
       <div class="modal-body">
       <form method="post" action="" enctype="multipart/form-data">
         <input type="hidden" name="product" value ="<?=$fetch_plan_products['product_id']?>">
-        <input type="hidden" name="order_quantity" value ="<?=$fetch_plan_products['order_amount']?>">
       <div class="form-group mt-1">
 			    <label class="text-start">จำนวน</label>
           <input class="form-control" type="number" name="quantity" min="0" value="<?=$fetch_plan_products['plan_amount']?>" max="<?=$fetch_plan_products['plan_amount']?>" required>
