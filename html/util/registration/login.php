@@ -28,7 +28,7 @@ include '../../inc/errors.php';
 			<div class="card-footer">
 				<button type="submit" class="btn btn-primary" name="login_user">เข้าสู่ระบบ</button>
 					<p>
-						ยังไม่เป็นสมาชิกอยู่หรอ? <a href="register.php">สมัครสมาชิก</a>
+						ยังไม่เป็นสมาชิกอยู่หรอ? <a href="consent_form.php">สมัครสมาชิก</a>
 					</p>
 			</div>
 				</form>

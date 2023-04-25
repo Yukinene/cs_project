@@ -3,8 +3,7 @@ require '../../inc/header.php';
 require '../../inc/controller/usercontroller.php';
 include '../../inc/errors.php'; 
 ?>
-  <title>ระบบสมัครสมาชิก</title>
-  
+  <title>ระบบสมัครสมาชิก</title>  
   <div class="container">
   	<div class="row">
   		<div class="col-4"></div>

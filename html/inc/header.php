@@ -106,7 +106,7 @@
         {
         ?>
           <li class="nav-item"><span><a name="login" href="../../util/registration/login.php" class="nav-link">เข้าสู่ระบบ</a></span></li>
-          <li class="nav-item"><span><a name="register" href="../../util/registration/register.php" class="nav-link">สมัครสมาชิก</a></span></li>
+          <li class="nav-item"><span><a name="register" href="../../util/registration/consent_form.php" class="nav-link">สมัครสมาชิก</a></span></li>
         <?php
         }
         ?>

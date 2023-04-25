@@ -18,7 +18,7 @@
             </a>
           <a
             class="btn btn-outline-dark btn-lg m-2"
-            href="../../util/registration/register.php"
+            href="../../util/registration/consent_form.php"
           >สมัครสมาชิก</a>
         </div>
       </div>

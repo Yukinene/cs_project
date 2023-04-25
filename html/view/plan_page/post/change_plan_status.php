@@ -1,6 +1,5 @@
-
 <?php
-$check_plan_products_amount = mysqli_query($db, "SELECT * FROM `plan_products` WHERE `plan_id` = '".$_GET['id']."'"); 
+$check_plan_products_amount = mysqli_query($db, "SELECT * FROM `plan_products` WHERE `plan_id` = '".$_GET['id']."'");
 ?>
 <form action="post/post_plan_phase.php" method="post">
     <input type="hidden" name="plan_id" value="<?=

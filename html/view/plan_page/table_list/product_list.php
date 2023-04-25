@@ -1,8 +1,6 @@
 <?php
-    $select_plan_products = mysqli_query($db,"SELECT * FROM `plan_products` WHERE `plan_id` = ".$plans['plan_id']."");
-?>
-<?php
-if(mysqli_num_rows($select_plan_products) > 0){
+  $select_plan_products = mysqli_query($db,"SELECT * FROM `plan_products` WHERE `plan_id` = ".$plans['plan_id']."");
+  if(mysqli_num_rows($select_plan_products) > 0){
 ?>
 <h3>สินค้าในแผน :</h3>
 <div class="table-responsive">
@@ -14,7 +12,7 @@ if(mysqli_num_rows($select_plan_products) > 0){
               สินค้า
             </th>
             <th width='20%'>
-              จำนวนที่ผลิต/ถุง
+              จำนวนที่ผลิต (ถุง)
             </th>
             <?php if ($plans['status'] == 'เตรียมแผน') {?>
             <th width='40%'>
