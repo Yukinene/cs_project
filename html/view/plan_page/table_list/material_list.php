@@ -18,7 +18,7 @@ if(mysqli_num_rows($select_plan_materials) > 0){
               จำนวนที่ใช้
             </th>
             <th width='20%'>
-              จำนวนที่ซื้อ
+              จำนวนที่สั่งซื้อ
             </th>
           </tr>
 			</center>

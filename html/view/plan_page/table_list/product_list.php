@@ -14,7 +14,7 @@ if(mysqli_num_rows($select_plan_products) > 0){
               สินค้า
             </th>
             <th width='20%'>
-              ที่ผลิต
+              จำนวนที่ผลิต/ถุง
             </th>
             <?php if ($plans['status'] == 'เตรียมแผน') {?>
             <th width='40%'>
