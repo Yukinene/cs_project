@@ -19,11 +19,11 @@ include '../../inc/errors.php';
         <thead>
 			<center>
             <tr>
-            <th width='25%'>
+            <th width='35%'>
               วัตถุดิบ
             </th>
-            <th width='10%'>
-              จำนวนที่ใช้
+            <th width='45%'>
+              จำนวนที่ใช้ (กิโลกรัม)
             </th>
             <th width='20%'>
               ตัวเลือก

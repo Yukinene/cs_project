@@ -82,9 +82,15 @@ else {
                         </center>
                     </div>
                     <div  class="<?php
-                    if ($order['status'] != 2) {
+                    if ($order['status'] <= 2) {
+                        if ($order['payment_method'] != 'เก็บเงินปลายทาง') {
+                            echo "visually-hidden";
+                        }
+                     }
+                     else {
                         echo "visually-hidden";
-                     }?>">
+                     }
+                     ?>">
                         <center>
                         <h5 class="card-title mt-2">จัดเตรียมสินค้า</h5>
                         <div class="mb-2">

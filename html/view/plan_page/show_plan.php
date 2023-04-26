@@ -34,10 +34,10 @@ else {
 </div>
 <?php }?>
 <div class="row mb-2">
-    <div class="col-12">
+    <div class="col-12 mb-2">
         <?php require 'table_list/product_list.php'; ?>
     </div>
-    <div class="col-12">
+    <div class="col-12 mb-2">
         <?php require 'table_list/material_list.php'; ?>
     </div>
 </div>

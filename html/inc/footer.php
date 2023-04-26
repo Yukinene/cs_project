@@ -12,7 +12,7 @@
         เขตสายไหม แขวงสายไหม จ.กรุงเทพมหานคร 10220</p>
         <p class="mb-0"><abbr title="Phone" class="initialism">โทรศัพท์:</abbr> (+66) 80 254 5728</p>
         <p class="mb-0"><abbr title="Email" class="initialism">อีเมล:</abbr> 
-        <a href="mailto:puminfong9445@gmail.com" class="btn btn-light">puminfong9445@gmail.com</a></p>
+        <a href="mailto:pumin.s@ku.th" class="btn btn-light">pumin.s@ku.th</a></p>
         </address>
       </div>
     </div>

@@ -1,5 +1,5 @@
 <?php
-    $discount_list_query = "SELECT * FROM `discount`";
+    $discount_list_query = "SELECT * FROM `discount` ORDER BY `discount`.`order_price` ASC";
     $select_discount_list = mysqli_query($db,$discount_list_query);
 ?>
     <table id="discountTable" class="table table-striped" style="width:100%">
