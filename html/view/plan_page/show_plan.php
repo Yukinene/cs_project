@@ -20,8 +20,23 @@ else {
         <h2 class="card-title">แผนการผลิตที่ <?= $plans['plan_id'] ?></h2>
     </div>
     <div class="col-2">
-        <div class="mb-2 d-flex flex-row-reverse gap-3">
-        <h5>สถานะ : <?= $plans['status'] ?></h5>
+        <div class="mb-2 d-flex flex-row-reverse gap-2">
+        <label class="<?php
+        if ($plans['status'] == 'เตรียมแผน') {
+            echo "text-danger";
+        }
+        if ($plans['status'] == 'เตรียมตัวซื้อวัตถุดิบ') {
+            echo "text-warning";
+        }
+        
+        if ($plans['status'] == 'กำลังทำสินค้า') {
+            echo "text-info";
+        }
+        if ($plans['status'] == 'เสร็จสิ้น') {
+            echo "text-success";
+        }
+        ?>"><?= $plans['status'] ?></label>
+        <label>สถานะ : </label>
         </div>
         <div class="mb-2 d-flex flex-row-reverse gap-3">
             <?php require 'post/change_plan_status.php'; ?>

@@ -15,7 +15,9 @@ require '../../inc/header.php';
                 </div>
             </div>
             <div class="card-footer">
-                <button class="btn btn-success" name="register" id="register" href="register.php" disabled>ข้าพเจ้ายอมรับนโยบายเกี่ยวกับข้อมูลส่วนบุคคลนี้</button>
+                <button class="btn btn-success" name="register" id="register" onclick="location.href='register.php';" disabled>
+                    ข้าพเจ้ายอมรับนโยบายเกี่ยวกับข้อมูลส่วนบุคคลนี้
+                </button>
             </div>
         </div>
     </div>
@@ -23,8 +25,12 @@ require '../../inc/header.php';
 
 <script>
     function scroll() {
-        var consent = document.querySelector('#consent').scrollTop;
-        if (consent > 2500) {
+        var consent = document.querySelector('#consent');
+        var scrollTop = consent.scrollTop;
+        var height = consent.scrollHeight - consent.clientHeight;
+        var percent = scrollTop/height;
+        console.log(percent);
+        if (percent > 0.99) {
             document.getElementById("register").disabled = false;
         }
         else
@@ -38,6 +44,7 @@ require '../../inc/header.php';
     .addEventListener("scroll", (event) => {
         scroll();
     });
+
 </script>
 
 <?php

@@ -14,7 +14,7 @@ $check_plan_products_amount = mysqli_query($db, "SELECT * FROM `plan_products` W
         ยืนยัน
         </button>
     <?php } ?>
-    <?php if ($plans['status'] == 'เตรียมตัวซื้อ') {?>
+    <?php if ($plans['status'] == 'เตรียมตัวซื้อวัตถุดิบ') {?>
         <button type="submit" class="btn btn-success" name="comfirm_plan_phase_2">
         ซื้อวัตถุดิบเรียบร้อย
         </button>

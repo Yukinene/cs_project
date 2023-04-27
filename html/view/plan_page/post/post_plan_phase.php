@@ -40,7 +40,7 @@ if (isset($_POST['plan_id'])) {
                 VALUES (".$_POST['plan_id'].",".$item.",".$quantity.",".$material_amount_f.")
                 ");
         }
-        $status = "เตรียมตัวซื้อ";
+        $status = "เตรียมตัวซื้อวัตถุดิบ";
         mysqli_query($db, "
                 UPDATE `plans` SET `status`='".$status."'
                 WHERE `plan_id`=".$_POST['plan_id']);
