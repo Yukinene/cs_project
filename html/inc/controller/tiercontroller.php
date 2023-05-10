@@ -7,13 +7,13 @@ if (isset($_POST['add_dis'])) {
     $result = mysqli_query($db,$tier_check);
     $check = mysqli_fetch_assoc($result);
     if ($check) { // if check exists
-        array_push($errors, "ส่วนลดนี้มีอยู่ในระบบ");
+        array_push($errors, "ระดับนี้มีอยู่ในระบบ");
       }
     else {
       $query = "INSERT INTO `discount`(`tier`,`order_price`, `discount_percentage`) 
       VALUES ('$tier','$order_price','$discount_percentage')";
   	  mysqli_query($db, $query);
-      array_push($completes, "เพิ่มส่วนลดสำเร็จ");
+      array_push($completes, "เพิ่มระดับสำเร็จ");
     }
 }
 if (isset($_POST['del_dis'])) {
@@ -24,10 +24,10 @@ if (isset($_POST['del_dis'])) {
   if ($check) { // if check exists
     $query = "DELETE FROM `discount` WHERE `tier` = '".$tier."'";
     mysqli_query($db, $query);
-    array_push($completes, "ลบสำเร็จ");
+    array_push($completes, "ลบระดับสำเร็จ");
     }
   else {
-    array_push($errors, "ส่วนลดนี้ไม่มีอยู่ในระบบ");
+    array_push($errors, "ระดับนี้ไม่มีอยู่ในระบบ");
   }
 }
 ?>
