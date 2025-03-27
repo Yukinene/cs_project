@@ -4,7 +4,7 @@
 //CAPTCHA
 if (isset($_POST['cf-turnstile-response'])) {
   $captcha = $_POST['cf-turnstile-response'];
-  $secretKey = "0x4AAAAAAADwjIjR3QF7_9O7Of0nabGFSUk";
+  $secretKey = "";
   $ip = $_SERVER['REMOTE_ADDR'];
 
   $url_path = 'https://challenges.cloudflare.com/turnstile/v0/siteverify';
