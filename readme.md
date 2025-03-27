@@ -23,3 +23,7 @@ cd cs_project
 
 ### 3. Upload Database
 locate ```cs_project\database\cs_project_db```
+
+### Extra Using Secret Key Cloudflare to verify identity
+locate
+```cs_project\html\util\user_controller.php```
